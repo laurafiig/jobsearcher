@@ -1,20 +1,18 @@
 // Include React
 var React = require("react");
 
-// Creating the Form component
-var Form = React.createClass({
+// Creating the Jobs component
+var Jobs = React.createClass({
 
   // Here we describe this component's render method
   render: function() {
     return (
       <div className="panel panel-default">
         <div className="panel-heading">
-          <h3 className="panel-title text-center">Form Goes Here</h3>
+          <h3 className="panel-title text-center">List of Jobs applied goes here</h3>
         </div>
         <div className="panel-body text-center">
-          <form >
-            
-          </form>
+
         </div>
       </div>
     );
