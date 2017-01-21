@@ -2,8 +2,10 @@
 var React = require("react");
 
 // Here we include all of the sub-components
+var Choice = require("./children/Choice");
 var Form = require("./children/Form");
 var Jobs = require("./children/Jobs");
+var Login = require("./children/Login");
 var Reviews = require("./children/Reviews");
 var Survey = require("./children/Survey");
 
@@ -23,6 +25,16 @@ var Main = React.createClass({
             </p>
           </div>
         </div>
+        <div className="row">  
+          <div className="col-md-12">
+            <Login />
+          </div>
+        </div>  
+        <div className="row">  
+          <div className="col-md-12">
+            <Choice />
+          </div>
+        </div>  
         <div className="row">  
           <div className="col-md-12">
             <Form />
