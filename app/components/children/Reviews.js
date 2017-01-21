@@ -20,4 +20,4 @@ var Reviews = React.createClass({
 });
 
 // Export the component back for use in other files
-module.exports = Form;
+module.exports = Reviews;
