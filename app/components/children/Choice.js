@@ -12,7 +12,30 @@ var Choice = React.createClass({
           <h3 className="panel-title text-center">What would you like to do?</h3>
         </div>
         <div className="panel-body text-center">
-
+              <button
+                className="btn btn-default"
+                type="submit"
+              >
+                New App
+              </button>
+              <button
+                className="btn btn-default"
+                type="submit"
+              >
+                See Apps
+              </button>
+              <button
+                className="btn btn-default"
+                type="submit"
+              >
+                New Review
+              </button>
+              <button
+                className="btn btn-default"
+                type="submit"
+              >
+                See Reviews
+              </button>              
         </div>
       </div>
     );

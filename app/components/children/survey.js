@@ -12,8 +12,51 @@ var Survey = React.createClass({
           <h3 className="panel-title text-center">Survey Goes Here</h3>
         </div>
         <div className="panel-body text-center">
-          <form >
-            
+          <form>
+            <div className="form-group">
+              <h4 className="">
+                <strong>Application Number</strong>
+              </h4>
+              <input
+                type="text"
+                value=""
+                className="form-control text-center"
+                id="term"
+                onChange=""
+                required
+              />
+              <br />
+              <h4 className="">
+                <strong>Stage</strong>
+              </h4>              
+              <select>
+                <option value="application">Application Process</option>
+                <option value="phone">Phone Interview</option>
+                <option value="interview">Interview</option>
+                <option value="offer">Offer</option>
+                <option value="rejection">Rejection</option>
+                <option value="general">General</option>
+              </select>
+              <br />
+              <h4 className="">
+                <strong>Comments</strong>
+              </h4>
+              <textarea
+                type="text"
+                value=""
+                className="form-control text-center"
+                id="term"
+                onChange=""
+                required
+              />
+              <br />
+              <button
+                className="btn btn-default"
+                type="submit"
+              >
+                Submit
+              </button>
+            </div>
           </form>
         </div>
       </div>

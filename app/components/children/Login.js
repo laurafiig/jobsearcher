@@ -12,8 +12,39 @@ var Login = React.createClass({
           <h3 className="panel-title text-center">Login Form Here</h3>
         </div>
         <div className="panel-body text-center">
-          <form >
-            
+          <form>
+            <div className="form-group">
+              <h4 className="">
+                <strong>Username</strong>
+              </h4>
+              <input
+                type="text"
+                value=""
+                className="form-control text-center"
+                id="term"
+                onChange=""
+                required
+              />
+              <br />
+              <h4 className="">
+                <strong>Password</strong>
+              </h4>
+              <input
+                type="password"
+                value=""
+                className="form-control text-center"
+                id="term"
+                onChange=""
+                required
+              />
+              <br />
+              <button
+                className="btn btn-default"
+                type="submit"
+              >
+                Submit
+              </button>
+            </div>
           </form>
         </div>
       </div>
