@@ -2,52 +2,52 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var JobSchema = new Schema({
-	Company: {
+	company: {
 		type: String
 	},
-	Title: {
+	title: {
 		type: String
 	},
-	Link: {
+	link: {
 		type: String
 	},
-	AppDate: {
+	dateApp: {
 		type: Date
 	},
 	HowApp: {
 		type: String
 	},
-	Contact: {
+	contactApp: {
 		type: String
 	},
-	PhoneDate: {
+	datePhone: {
 		type: Date
 	},
-	ContactPhone: {
+	contactPhone: {
 		type: String
 	},
-	ResultPhone: {
+	resultPhone: {
 		type: String
 	},
-	InterviewDate: {
+	dateInt: {
 		type: Date
 	},
-	ContactInt: {
+	contactInt: {
 		type: String
 	},
-	ResultInt: {
+	resultInt: {
 		type: String
 	},
-	OfferDate: {
+	dateOffer: {
 		type: Date
 	},
-	Accepted: {
+	Accept: {
 		type: Boolean
 	},
-	RejectDate: {
+	dateRej: {
 		type: Date
 	},
-	RejectMethod: {
+	howRej: {
 		type: String
 	}
 });

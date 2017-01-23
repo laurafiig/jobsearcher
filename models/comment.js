@@ -2,10 +2,10 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var CommentSchema = new Schema({
-	AppNum: {
+	rev: {
 		type: Number
 	},
-	stage: {
+	section: {
 		type: String
 	},
 	comment: {
