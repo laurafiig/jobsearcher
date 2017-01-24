@@ -61,7 +61,6 @@ var Form = React.createClass({
                 className="form-control text-center"
                 id="appDate"
                 onChange=""
-                required
               />
               <br />              
               <h4 className="">
@@ -97,7 +96,6 @@ var Form = React.createClass({
                 className="form-control text-center"
                 id="phoneDate"
                 onChange=""
-                required
               />
               <h4 className="">
                 <strong>Contact Name</strong>
@@ -132,7 +130,6 @@ var Form = React.createClass({
                 className="form-control text-center"
                 id="intDate"
                 onChange=""
-                required
               />
               <h4 className="">
                 <strong>Contact Name</strong>
@@ -167,7 +164,6 @@ var Form = React.createClass({
                 className="form-control text-center"
                 id="offerDate"
                 onChange=""
-                required
               />
               <h4 className="">
                 <strong>AcceptedApplied</strong>
@@ -189,7 +185,6 @@ var Form = React.createClass({
                 className="form-control text-center"
                 id="rejectDate"
                 onChange=""
-                required
               />
               <h4 className="">
                 <strong>Method</strong>
