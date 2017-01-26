@@ -24,6 +24,7 @@ var Main = require("../components/Main");
 var Choice = require("../components/children/Choice");
 var Form = require("../components/children/Form");
 var Jobs = require("../components/children/Jobs");
+// xxxxx this one (Login) may go away xxxxx //
 var Login = require("../components/children/Login");
 var Reviews = require("../components/children/Reviews");
 var Survey = require("../components/children/Survey");
@@ -36,24 +37,27 @@ module.exports = (
 
     <Route path="/" component={Main}>
 
-      {/* If user selects Child1 then show the appropriate component*/}
+      {/*  xxxxx this one (Login) may go away xxxxx */}
+      {/* If user selects then show the appropriate component*/}
       <Route path="Login" component={Login} />
 
-      {/* If user selects Child2 then show the appropriate component*/}
+      {/* If user selects then show the appropriate component*/}
       <Route path="Choice" component={Choice} />
 
-      {/* If user selects Child1 then show the appropriate component*/}
+      {/* If user selects then show the appropriate component*/}
       <Route path="Form" component={Form} />
 
-      {/* If user selects Child2 then show the appropriate component*/}
+      {/* If user selects then show the appropriate component*/}
       <Route path="Jobs" component={Jobs} />
 
-      {/* If user selects Child1 then show the appropriate component*/}
+      {/* If user selects then show the appropriate component*/}
       <Route path="Survey" component={Survey} />
 
-      {/* If user selects Child2 then show the appropriate component*/}
+      {/* If user selects then show the appropriate component*/}
       <Route path="Reviews" component={Reviews} />
 
+      {/*  xxxxx this may change to search xxxxx */}
+      {/*  <IndexRoute component={Choice} /> */}
       {/* If user selects any other path... we get the Home Route */}
       <IndexRoute component={Login} />
 
