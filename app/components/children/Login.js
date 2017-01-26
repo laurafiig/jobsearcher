@@ -23,7 +23,7 @@ var Login = React.createClass({
                 className="form-control text-center"
                 id="term"
                 onChange=""
-                required
+                
               />
               <br />
               <h4 className="">
@@ -35,15 +35,10 @@ var Login = React.createClass({
                 className="form-control text-center"
                 id="term"
                 onChange=""
-                required
+                
               />
               <br />
-              <button
-                className="btn btn-default"
-                type="submit"
-              >
-                Submit
-              </button>
+              <a href="#/Choice" className="btn btn-primary btn-lg">Login</a>
             </div>
           </form>
         </div>
