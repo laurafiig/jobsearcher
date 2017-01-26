@@ -13,11 +13,11 @@ var Choice = React.createClass({
         </div>
         <div className="panel-body text-center">
               <a href="#/Form" className="btn btn-primary btn-lg">New App</a>
-              
+              <a>          </a>
               <a href="#/Jobs" className="btn btn-primary btn-lg">See Apps</a>
-              
+              <a>          </a>
               <a href="#Survey" className="btn btn-primary btn-lg">New Review</a>
-              
+              <a>          </a>
               <a href="#/Reviews" className="btn btn-primary btn-lg">See Reviews</a>
                             
         </div>
