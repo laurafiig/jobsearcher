@@ -10,19 +10,20 @@ var routes = require("./config/routes");
 // Renders the contents according to the route page.
 ReactDOM.render(routes, document.getElementById("app"));
 
+
 /*
 The app element allows you to specify the portion of your app that should be hidden (via aria-hidden)
 to prevent assistive technologies such as screenreaders from reading content outside of the content of
 your modal.  It can be specified in the following ways:
  
-* element*/
+* element
 Modal.setAppElement(appElement);
  
-/* query selector - uses the first element found if you pass in a class.
-Modal.setAppElement('#your-app-element');*/
+* query selector - uses the first element found if you pass in a class.
+Modal.setAppElement('#your-app-element');
  
-
-var appElement = document.getElementById("./components/main");
+*/
+var appElement = document.getElementById("./component/main");
  
  
  
