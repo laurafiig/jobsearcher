@@ -1,82 +1,59 @@
 var React = require('react');
-var ReactDOM = require('react-dom');
-var Modal = require('react-modal');
 
-/*
-The app element allows you to specify the portion of your app that should be hidden (via aria-hidden)
-to prevent assistive technologies such as screenreaders from reading content outside of the content of
-your modal.  It can be specified in the following ways:
- 
-* element
-Modal.setAppElement(appElement);
- 
-* query selector - uses the first element found if you pass in a class.
-Modal.setAppElement('#your-app-element');
+let Modal = React.createClass({
+    componentDidMount(){
+        $(this.getDOMNode()).modal('show');
+        $(this.getDOMNode()).on('hidden.bs.modal', this.props.handleHideModal);
+    },
+    render(){
+        return (
+          <div className="modal fade">
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 className="modal-title">Modal title</h4>
+                </div>
+                <div className="modal-body">
+                  <p>One fine body&hellip;</p>
+                </div>
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" className="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )
+    },
+    propTypes:{
+        handleHideModal: React.PropTypes.func.isRequired
+    }
+});
 
-What is 'your-app-element'? FIGURE THIS OUT!
- 
-*/
-var appElement = document.getElementById("your-app-element");
- 
- 
- 
-const customStyles = {
-  content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
-  }
-};
- 
- 
-var App = React.createClass({
- 
-  getInitialState: function() {
-    return { modalIsOpen: false };
-  },
- 
-  openModal: function() {
-    this.setState({modalIsOpen: true});
-  },
- 
-  afterOpenModal: function() {
-    // references are now sync'd and can be accessed. 
-    this.refs.subtitle.style.color = '#f00';
-  },
- 
-  closeModal: function() {
-    this.setState({modalIsOpen: false});
-  },
- 
-  render: function() {
-    return (
-      <div>
-        <button onClick={this.openModal}>Open Modal</button>
-        <Modal
-          isOpen={this.state.modalIsOpen}
-          onAfterOpen={this.afterOpenModal}
-          onRequestClose={this.closeModal}
-          style={customStyles}
-          contentLabel="Example Modal"
-        >
- 
-          <h2 ref="subtitle">Hello</h2>
-          <button onClick={this.closeModal}>close</button>
-          <div>I am a modal</div>
-          <form>
-            <input />
-            <button>tab navigation</button>
-            <button>stays</button>
-            <button>inside</button>
-            <button>the modal</button>
-          </form>
-        </Modal>
-      </div>
+
+
+let App = React.createClass({
+    getInitialState(){
+        return {view: {showModal: false}}
+    },
+    handleHideModal(){
+        this.setState({view: {showModal: false}})
+    },
+    handleShowModal(){
+        this.setState({view: {showModal: true}})
+    },
+    render(){
+    return(
+        <div className="row">
+            <button className="btn btn-default btn-block" onClick={this.handleShowModal}>Open Modal</button>
+            {this.state.view.showModal ? <Modal handleHideModal={this.handleHideModal}/> : null}
+        </div>
     );
   }
 });
- 
-ReactDOM.render(<App/>, appElement);
+
+React.render(
+   <App />,
+    document.getElementById('container')
+);
