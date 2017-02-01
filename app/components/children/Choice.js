@@ -12,7 +12,7 @@ var Choice = React.createClass({
           <h3 className="panel-title text-center">What would you like to do?</h3>
         </div>
         <div className="panel-body text-center">
-              <a href="#/Form" className="btn btn-primary btn-lg">New App</a>
+              <a href="#/App" className="btn btn-primary btn-lg">New App</a>
               <a>          </a>
               <a href="#/Jobs" className="btn btn-primary btn-lg">See Apps</a>
               <a>          </a>
