@@ -4,7 +4,7 @@ var helpers = {
   // This will run our query.
   runQuery: function(term, start, end) {
 
-/*
+
     // Adjust to get search terms in proper format
     var formattedTerm = term.trim();
     var formattedStart = start.trim() + "0101";
@@ -25,7 +25,7 @@ var helpers = {
       return results.data.response;
     });
   },
-*/
+
 
   // This will return any saved articles from our database
   getSaved: function() {
