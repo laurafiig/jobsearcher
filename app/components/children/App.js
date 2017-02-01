@@ -1,8 +1,8 @@
 // Include React
 var React = require("react");
 
-// Creating the Form component
-var Form = React.createClass({
+// Creating the App component
+var App = React.createClass({
 
   // Here we describe this component's render method
   render: function() {
@@ -210,4 +210,4 @@ var Form = React.createClass({
 });
 
 // Export the component back for use in other files
-module.exports = Form;
+module.exports = App;
