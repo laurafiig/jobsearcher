@@ -6,7 +6,7 @@ var SurveyForm = React.createClass({
   // Here we set initial variables for the component to be blanks
   getInitialState: function() {
     return {
-      appNumber: "",
+      subject: "",
       value: "",
       comment: ""
     };
@@ -15,25 +15,33 @@ var SurveyForm = React.createClass({
   // Whenever we detect ANY change in the textbox, we register it.
   handleChange: function(event) {
     console.log("TEXT CHANGED");
-
     // Here we create syntax to capture any change in text to the query terms (pre-search).
     // See this Stack Overflow answer for more details:
     // http://stackoverflow.com/questions/21029999/react-js-identifying-different-inputs-with-one-onchange-handler
     var newState = {};
     newState[event.target.id] = event.target.value;
+    //need to add this next line to pick up drop down input
+    //this.setState({value: event.target.value});
+    //now back to our original solution
     this.setState(newState);
   },
+
+  handleChangeStage: function(event) {
+      this.setState({value: event.target.value});
+  },
+
 
   // This code handles the sending of the search terms to the parent Search component
   handleSubmit: function(event) {
     event.preventDefault();
     console.log("CLICKED");
-    this.props.postSaved(this.state.appNumber, this.state.value, this.state.comment);
     console.log("inputs start");
-    console.log(this.state.appNumber);
+    console.log(this.state.subject);
     console.log(this.state.value);
     console.log(this.state.comment);
     console.log("inputs end");
+    //this.props.postSaved(this.state.subject, this.state.value, this.state.comment);
+ 
   },
 
   // Here we describe this component's render method
@@ -44,23 +52,23 @@ var SurveyForm = React.createClass({
           <h3 className="panel-title text-center">Survey Goes Here</h3>
         </div>
         <div className="panel-body text-center">
-          <form>
+          <form onSubmit={this.handleSubmit}>
             <div className="form-group">
               <h4 className="">
-                <strong>Application Number</strong>
+                <strong>Review Subject</strong>
               </h4>
               <input
                 type="text"
-                value={this.state.appNumber}
+                value={this.state.subject}
                 className="form-control text-center"
-                id="appNumber"
+                id="subject"
                 onChange={this.handleChange}
               />
               <br />
               <h4 className="">
                 <strong>Stage</strong>
               </h4>              
-              <select value={this.state.value} onChange={this.handleChange}>
+              <select value={this.state.value} onChange={this.handleChangeStage}>
                 <option value="application">Application Process</option>
                 <option value="phone">Phone Interview</option>
                 <option value="interview">Interview</option>
