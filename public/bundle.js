@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -1506,3 +1507,5 @@
 
 /***/ }
 /******/ ]);
+=======
+>>>>>>> 6554fd85980fb3177171af852b1fba578f2c100d

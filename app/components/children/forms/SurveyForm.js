@@ -24,7 +24,7 @@ var SurveyForm = React.createClass({
     this.setState(newState);
   },
 
-  handleChangeStage: function(event) {
+  handleChangeForm: function(event) {
       this.setState({value: event.target.value});
   },
 
@@ -66,7 +66,7 @@ var SurveyForm = React.createClass({
               <h4 className="">
                 <strong>Stage</strong>
               </h4>              
-              <select value={this.state.value} onChange={this.handleChangeStage}>
+              <select value={this.state.value} onChange={this.handleChangeForm}>
                 <option value="application">Application Process</option>
                 <option value="phone">Phone Interview</option>
                 <option value="interview">Interview</option>
