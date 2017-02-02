@@ -9,6 +9,7 @@ var helpers = require("../../utils/helpers");
 
 // Creating the Survey component
 var Survey = React.createClass({
+
   // Here we set initial variables for the component to be blanks
   getInitialState: function() {
     return {
