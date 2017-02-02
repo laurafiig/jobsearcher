@@ -1,59 +1,22 @@
-var React = require('react');
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
 
-let Modal = React.createClass({
-    componentDidMount(){
-        $(this.getDOMNode()).modal('show');
-        $(this.getDOMNode()).on('hidden.bs.modal', this.props.handleHideModal);
-    },
-    render(){
-        return (
-          <div className="modal fade">
-            <div className="modal-dialog">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 className="modal-title">Modal title</h4>
-                </div>
-                <div className="modal-body">
-                  <p>One fine body&hellip;</p>
-                </div>
-                <div className="modal-footer">
-                  <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="button" className="btn btn-primary">Save changes</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        )
-    },
-    propTypes:{
-        handleHideModal: React.PropTypes.func.isRequired
-    }
-});
-
-
-
-let App = React.createClass({
-    getInitialState(){
-        return {view: {showModal: false}}
-    },
-    handleHideModal(){
-        this.setState({view: {showModal: false}})
-    },
-    handleShowModal(){
-        this.setState({view: {showModal: true}})
-    },
-    render(){
-    return(
-        <div className="row">
-            <button className="btn btn-default btn-block" onClick={this.handleShowModal}>Open Modal</button>
-            {this.state.view.showModal ? <Modal handleHideModal={this.handleHideModal}/> : null}
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
         </div>
-    );
-  }
-});
-
-React.render(
-   <App />,
-    document.getElementById('container')
-);
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>

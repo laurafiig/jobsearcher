@@ -1,64 +1,29 @@
 // Include React
 var React = require("react");
 
+// Include the SurveyForm components
+var SurveyForm = require("./forms/SurveyForm");
+
+// Include the helpers for making API calls
+var helpers = require("../../utils/helpers");
+
 // Creating the Survey component
 var Survey = React.createClass({
+  // Here we set initial variables for the component to be blanks
+  getInitialState: function() {
+    return {
+      results: {}
+    };
+  },
 
-  // Here we describe this component's render method
+   // Here we describe this component's render method
   render: function() {
     return (
-      <div className="panel panel-default">
-        <div className="panel-heading">
-          <h3 className="panel-title text-center">Survey Goes Here</h3>
-        </div>
-        <div className="panel-body text-center">
-          <form>
-            <div className="form-group">
-              <h4 className="">
-                <strong>Application Number</strong>
-              </h4>
-              <input
-                type="text"
-                value=""
-                className="form-control text-center"
-                id="term"
-                onChange=""
-                required
-              />
-              <br />
-              <h4 className="">
-                <strong>Stage</strong>
-              </h4>              
-              <select>
-                <option value="application">Application Process</option>
-                <option value="phone">Phone Interview</option>
-                <option value="interview">Interview</option>
-                <option value="offer">Offer</option>
-                <option value="rejection">Rejection</option>
-                <option value="general">General</option>
-              </select>
-              <br />
-              <h4 className="">
-                <strong>Comments</strong>
-              </h4>
-              <textarea
-                type="text"
-                value=""
-                className="form-control text-center"
-                id="term"
-                onChange=""
-                required
-              />
-              <br />
-              <button
-                className="btn btn-default"
-                type="submit"
-              >
-                Submit
-              </button>
-            </div>
-          </form>
-        </div>
+      <div className="main-container">
+
+        {/* Note how we pass the setQuery function to enable Query to perform searches */}
+        <SurveyForm />
+        
       </div>
     );
   }
