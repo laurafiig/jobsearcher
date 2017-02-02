@@ -3,6 +3,7 @@ var React = require("react");
 
 // Creating the SurveyForm component
 var SurveyForm = React.createClass({
+  
   // Here we set initial variables for the component to be blanks
   getInitialState: function() {
     return {
@@ -20,9 +21,6 @@ var SurveyForm = React.createClass({
     // http://stackoverflow.com/questions/21029999/react-js-identifying-different-inputs-with-one-onchange-handler
     var newState = {};
     newState[event.target.id] = event.target.value;
-    //need to add this next line to pick up drop down input
-    //this.setState({value: event.target.value});
-    //now back to our original solution
     this.setState(newState);
   },
 
@@ -49,7 +47,7 @@ var SurveyForm = React.createClass({
     return (
       <div className="panel panel-default">
         <div className="panel-heading">
-          <h3 className="panel-title text-center">Survey Goes Here</h3>
+          <h2 className="text-center">Leave Feedback Here</h2>
         </div>
         <div className="panel-body text-center">
           <form onSubmit={this.handleSubmit}>
