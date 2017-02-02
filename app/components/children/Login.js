@@ -1,47 +1,28 @@
 // Include React
 var React = require("react");
 
+//Include LoginForm components
+var LoginForm = require("./forms/LoginForm");
+
+//for making API calls, even though we have no APIs....
+var helpers = require("../../utils/helpers");
+
 // Creating the Login component
 var Login = React.createClass({
+  //set initial variables for component to be blank
+  getInitialState: function() {
+    return {
+      results: {}
+    };
+  },
 
   // Here we describe this component's render method
   render: function() {
     return (
       <div className="panel panel-default">
-        <div className="panel-heading">
-          <h3 className="panel-title text-center">Login Form Here</h3>
-        </div>
-        <div className="panel-body text-center">
-          <form>
-            <div className="form-group">
-              <h4 className="">
-                <strong>Username</strong>
-              </h4>
-              <input
-                type="text"
-                value=""
-                className="form-control text-center"
-                id="term"
-                onChange=""
-                
-              />
-              <br />
-              <h4 className="">
-                <strong>Password</strong>
-              </h4>
-              <input
-                type="password"
-                value=""
-                className="form-control text-center"
-                id="term"
-                onChange=""
-                
-              />
-              <br />
-              <a href="#/Choice" className="btn btn-primary btn-lg">Login</a>
-            </div>
-          </form>
-        </div>
+
+        <LoginForm />
+
       </div>
     );
   }
