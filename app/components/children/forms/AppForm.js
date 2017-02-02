@@ -7,9 +7,22 @@ var AppForm = React.createClass({
   // Here we set initial variables for the component to be blanks
   getInitialState: function() {
     return {
-      subject: "",
-      value: "",
-      comment: ""
+      compName: "",
+      position: "",
+      link: "",
+      appDate: "",
+      value1: "other",
+      appContact: "",
+      phoneDate: "",
+      phoneCont: "",
+      phoneResult: "",
+      intDate: "",
+      intContact: "",
+      intResult: "",
+      offerDate: "",
+      value2: "blank",
+      rejectDate: "",
+      value3: "other"
     };
   },
 
@@ -17,28 +30,46 @@ var AppForm = React.createClass({
   handleChange: function(event) {
     console.log("TEXT CHANGED");
     // Here we create syntax to capture any change in text to the query terms (pre-search).
-    // See this Stack Overflow answer for more details:
-    // http://stackoverflow.com/questions/21029999/react-js-identifying-different-inputs-with-one-onchange-handler
+    
     var newState = {};
     newState[event.target.id] = event.target.value;
     this.setState(newState);
   },
 
-  handleChangeStage: function(event) {
-      this.setState({value: event.target.value});
+  handleChangeForm1: function(event) {
+      this.setState({value1: event.target.value});
+  },
+  handleChangeForm2: function(event) {
+      this.setState({value2: event.target.value});
+  },
+  handleChangeForm3: function(event) {  
+      this.setState({value3: event.target.value});
   },
 
-
+  
   // This code handles the sending of the search terms to the parent Search component
   handleSubmit: function(event) {
     event.preventDefault();
     console.log("CLICKED");
     console.log("inputs start");
-    console.log(this.state.subject);
-    console.log(this.state.value);
-    console.log(this.state.comment);
+    console.log(this.state.compName);
+    console.log(this.state.position);
+    console.log(this.state.link);
+    console.log(this.state.appDate);
+    console.log(this.state.value1);
+    console.log(this.state.appContact);
+    console.log(this.state.phoneDate);
+    console.log(this.state.phoneCont);
+    console.log(this.state.phoneResult);
+    console.log(this.state.intDate);
+    console.log(this.state.intContact);
+    console.log(this.state.intResult);
+    console.log(this.state.offerDate);
+    console.log(this.state.value2);
+    console.log(this.state.rejectDate);
+    console.log(this.state.value3);
     console.log("inputs end");
-    //this.props.postSaved(this.state.subject, this.state.value, this.state.comment);
+    //this.props.postSaved(this.state.compName,this.state.position,this.state.link,this.state.appDate,this.state.appContact,this.state.phoneDate,this.state.phoneCont,this.state.phoneResult,this.state.intDate,this.state.intContact,this.state.intResult,this.state.offerDate,this.state.rejectDate);
  
   },
 
@@ -50,17 +81,17 @@ var AppForm = React.createClass({
           <h2 className="text-center">Application Info</h2>
         </div>
         <div className="panel-body text-center">
-          <form>
+          <form onSubmit={this.handleSubmit}>
             <div className="form-group">
               <h4 className="">
                 <strong>Company Name</strong>
               </h4>
               <input
                 type="text"
-                value=""
+                value={this.state.compName}
                 className="form-control text-center"
                 id="compName"
-                onChange=""
+                onChange={this.handleChange}
                 required
               />
               <br />
@@ -69,10 +100,10 @@ var AppForm = React.createClass({
               </h4>
               <input
                 type="text"
-                value=""
+                value={this.state.position}
                 className="form-control text-center"
                 id="position"
-                onChange=""
+                onChange={this.handleChange}
                 required
               />
               <br />
@@ -81,10 +112,10 @@ var AppForm = React.createClass({
               </h4>
               <input
                 type="text"
-                value=""
+                value={this.state.link}
                 className="form-control text-center"
                 id="link"
-                onChange=""
+                onChange={this.handleChange}
               />
               <br />
               <h4 className="">
@@ -92,20 +123,21 @@ var AppForm = React.createClass({
               </h4>
               <input
                 type="date"
-                value=""
+                value={this.state.appDate}
                 className="form-control text-center"
                 id="appDate"
-                onChange=""
+                onChange={this.handleChange}
               />
               <br />              
               <h4 className="">
                 <strong>How Applied</strong>
               </h4>              
-              <select>
+              <select value={this.state.value1} onChange={this.handleChangeForm1}>
                 <option value="linkedin">Linked In</option>
                 <option value="company">On Company Website</option>
                 <option value="jobboard">Job Board</option>
                 <option value="recruiter">Recruiter</option>
+                <option value="other">Recruiter</option>
               </select>
               <br />
               <h4 className="">
@@ -113,10 +145,10 @@ var AppForm = React.createClass({
               </h4>
               <input
                 type="text"
-                value=""
+                value={this.state.appContact}
                 className="form-control text-center"
                 id="appContact"
-                onChange=""
+                onChange={this.handleChange}
               />
               <hr />
               <h2 className="">
@@ -127,30 +159,30 @@ var AppForm = React.createClass({
               </h4>
               <input
                 type="date"
-                value=""
+                value={this.state.phoneDate}
                 className="form-control text-center"
                 id="phoneDate"
-                onChange=""
+                onChange={this.handleChange}
               />
               <h4 className="">
                 <strong>Contact Name</strong>
               </h4>
               <input
                 type="text"
-                value=""
+                value={this.state.phoneCont}
                 className="form-control text-center"
                 id="phoneCont"
-                onChange=""
+                onChange={this.handleChange}
               />
               <h4 className="">
                 <strong>Result</strong>
               </h4>
               <input
                 type="text"
-                value=""
+                value={this.state.phoneResult}
                 className="form-control text-center"
                 id="phoneResult"
-                onChange=""
+                onChange={this.handleChange}
               />
               <hr />
               <h2 className="">
@@ -161,30 +193,30 @@ var AppForm = React.createClass({
               </h4>
               <input
                 type="date"
-                value=""
+                value={this.state.intDate}
                 className="form-control text-center"
                 id="intDate"
-                onChange=""
+                onChange={this.handleChange}
               />
               <h4 className="">
                 <strong>Contact Name</strong>
               </h4>
               <input
                 type="text"
-                value=""
+                value={this.state.intContact}
                 className="form-control text-center"
                 id="intContact"
-                onChange=""
+                onChange={this.handleChange}
               />
               <h4 className="">
                 <strong>Result</strong>
               </h4>
               <input
                 type="text"
-                value=""
+                value={this.state.intResult}
                 className="form-control text-center"
                 id="intResult"
-                onChange=""
+                onChange={this.handleChange}
               />
               <hr />
               <h2 className="">
@@ -195,17 +227,18 @@ var AppForm = React.createClass({
               </h4>
               <input
                 type="date"
-                value=""
+                value={this.state.offerDate}
                 className="form-control text-center"
                 id="offerDate"
-                onChange=""
+                onChange={this.handleChange}
               />
               <h4 className="">
-                <strong>AcceptedApplied</strong>
+                <strong>Accepted</strong>
               </h4>              
-              <select>
+              <select value={this.state.value2} onChange={this.handleChangeForm2}>
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
+                <option value="blank"></option>
               </select>
               <hr />
               <h2 className="">
@@ -216,15 +249,15 @@ var AppForm = React.createClass({
               </h4>
               <input
                 type="date"
-                value=""
+                value={this.state.rejectDate}
                 className="form-control text-center"
                 id="rejectDate"
-                onChange=""
+                onChange={this.handleChange}
               />
               <h4 className="">
                 <strong>Method</strong>
               </h4>              
-              <select>
+              <select value={this.state.value3} onChange={this.handleChangeForm3}>
                 <option value="phone">Phone</option>
                 <option value="email">EMail</option>
                 <option value="other">Other</option>
