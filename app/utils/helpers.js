@@ -1,7 +1,10 @@
+// Include the Axios library for HTTP requests
+var axios = require("axios");
+
 // Helper Functions
 var helpers = {
 
-  // This will run our query.
+/*  // This will run our query.
   runQuery: function(term, start, end) {
 
 
@@ -25,8 +28,8 @@ var helpers = {
       return results.data.response;
     });
   },
-
-
+*/
+/*
   // This will return any saved articles from our database
   getSaved: function() {
     return axios.get("/api/saved")
@@ -35,17 +38,17 @@ var helpers = {
         return results;
       });
   },
-  
+ */ 
   // This will save new articles to our database
-  postSaved: function(title, date, url) {
-    var newArticle = { title: title, date: date, url: url };
-    return axios.post("/api/saved", newArticle)
+  postSaved: function(subject, comment) {
+    var newComment = { rev: subject, comment: comment };
+    return axios.post("/api/saved", newComment)
       .then(function(response) {
         console.log("axios results", response.data._id);
         return response.data._id;
       });
   },
-  
+ /* 
   // This will remove saved articles from our database
   deleteSaved: function(title, data, url) {
     return axios.delete("/api/saved", {
@@ -60,7 +63,7 @@ var helpers = {
       return results;
     });
   }
-
+*/
 
 };
 

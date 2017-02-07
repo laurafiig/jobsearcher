@@ -51,7 +51,22 @@ app.get("/api", function(req, res) { });
 // This is the route we will send POST requests to save each search.
 app.post("/api", function(req, res) { });
 
+// Route to add an article to saved list
 
+app.post("/api/saved", function(req, res) {
+  var newComment = new Comment(req.body);
+
+  console.log(req.body);
+
+  newComment.save(function(err, doc) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      res.send(doc);
+    }
+  });
+});
  
 // -------------------------------------------------
 

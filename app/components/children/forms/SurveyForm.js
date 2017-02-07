@@ -1,6 +1,9 @@
 // Include React
 var React = require("react");
 
+// Include the helpers for making API calls
+var helpers = require("../../../utils/helpers");
+
 // Creating the SurveyForm component
 var SurveyForm = React.createClass({
   
@@ -23,9 +26,7 @@ var SurveyForm = React.createClass({
     this.setState(newState);
   },
 
-  handleChangeForm: function(event) {
-      this.setState({value: event.target.value});
-  },
+  
 
 
   // This code handles the sending of the search terms to the parent Search component
@@ -40,6 +41,18 @@ var SurveyForm = React.createClass({
     //this.props.postSaved(this.state.subject, this.state.value, this.state.comment);
  
   },
+
+
+  // This code handles the sending of the search terms to the parent Search component
+  handleClick: function(event) {
+    console.log("CLICKED");
+    console.log(event);
+
+    helpers.postSaved(event.subject, event.comment).then(function() {
+      console.log(event.comment);
+    });
+  },
+
 
   // Here we describe this component's render method
   render: function() {
@@ -62,18 +75,7 @@ var SurveyForm = React.createClass({
                 onChange={this.handleChange}
               />
               <br />
-              <h4 className="">
-                <strong>Stage</strong>
-              </h4>              
-              <select value={this.state.value} onChange={this.handleChangeForm}>
-                <option value="application">Application Process</option>
-                <option value="phone">Phone Interview</option>
-                <option value="interview">Interview</option>
-                <option value="offer">Offer</option>
-                <option value="rejection">Rejection</option>
-                <option value="general">General</option>
-              </select>
-              <br />
+              
               <h4 className="">
                 <strong>Comments</strong>
               </h4>
@@ -86,12 +88,7 @@ var SurveyForm = React.createClass({
                 required
               />
               <br />
-              <button
-                className="btn btn-default"
-                type="submit"
-              >
-                Submit
-              </button>
+              <button className="btn btn-primary" onClick={() => this.handleClick(event)}>Submit</button>
             </div>
           </form>
         </div>

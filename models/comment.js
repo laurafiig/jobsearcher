@@ -5,9 +5,7 @@ var CommentSchema = new Schema({
 	rev: {
 		type: Number
 	},
-	section: {
-		type: String
-	},
+	
 	comment: {
 		type: String
 	}

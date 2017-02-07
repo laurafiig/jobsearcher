@@ -23,7 +23,7 @@ var Survey = React.createClass({
       <div className="main-container">
 
         {/* Note how we pass the setQuery function to enable Query to perform searches */}
-        <SurveyForm />
+        <SurveyForm results={this.state.results} />
         
       </div>
     );
