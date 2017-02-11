@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var CommentSchema = new Schema({
 	rev: {
-		type: Number
+		type: String
 	},
 	
 	comment: {
@@ -13,3 +13,4 @@ var CommentSchema = new Schema({
 
 var Comment = mongoose.model("Comment", CommentSchema);
 module.exports = Comment;
+

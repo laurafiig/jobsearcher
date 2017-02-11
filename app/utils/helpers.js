@@ -29,6 +29,7 @@ var helpers = {
     });
   },
 */
+
 /*
   // This will return any saved articles from our database
   getSaved: function() {
@@ -39,15 +40,17 @@ var helpers = {
       });
   },
  */ 
-  // This will save new articles to our database
+  
+  // This will save new survey results to our database
   postSaved: function(subject, comment) {
     var newComment = { rev: subject, comment: comment };
-    return axios.post("/api/saved", newComment)
+    return axios.post("/api/surveys", newComment)
       .then(function(response) {
         console.log("axios results", response.data._id);
         return response.data._id;
       });
   },
+
  /* 
   // This will remove saved articles from our database
   deleteSaved: function(title, data, url) {

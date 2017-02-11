@@ -11,7 +11,7 @@ var SurveyForm = React.createClass({
   getInitialState: function() {
     return {
       subject: "",
-      value: "general",
+      value: "",
       comment: ""
     };
   },
@@ -35,10 +35,10 @@ var SurveyForm = React.createClass({
     console.log("CLICKED");
     console.log("inputs start");
     console.log(this.state.subject);
-    console.log(this.state.value);
+    //console.log(this.state.value);
     console.log(this.state.comment);
     console.log("inputs end");
-    //this.props.postSaved(this.state.subject, this.state.value, this.state.comment);
+    //this.props.updateSurvey(this.state.subject,  this.state.comment);
  
   },
 
@@ -88,7 +88,10 @@ var SurveyForm = React.createClass({
                 required
               />
               <br />
-              <button className="btn btn-primary" onClick={() => this.handleClick(event)}>Submit</button>
+              <button  className="btn btn-primary" onClick={() => this.handleClick(this.state)}>Submit</button>
+
+
+
             </div>
           </form>
         </div>

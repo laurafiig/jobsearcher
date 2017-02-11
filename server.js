@@ -5,7 +5,9 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 
 // Require  Schema
-
+var Comment = require("./models/comment.js");
+var Job = require("./models/jobsearch.js");
+var Login = require("./models/login.js");
 
 // Create Instance of Express
 var app = express();
@@ -43,21 +45,13 @@ app.get("/", function(req, res) {
   res.sendFile(__dirname + "/public/index.html");
 });
 
-// This is the route we will send GET requests to retrieve our most recent search data.
-// We will call this route the moment our page gets rendered
-app.get("/api", function(req, res) { });
 
 
-// This is the route we will send POST requests to save each search.
-app.post("/api", function(req, res) { });
+// Route to add a survey to saved list
 
-// Route to add an article to saved list
-
-app.post("/api/saved", function(req, res) {
+app.post("/api/surveys", function(req, res) {
   var newComment = new Comment(req.body);
-
   console.log(req.body);
-
   newComment.save(function(err, doc) {
     if (err) {
       console.log(err);
@@ -67,7 +61,7 @@ app.post("/api/saved", function(req, res) {
     }
   });
 });
- 
+
 // -------------------------------------------------
 
 // Listener
