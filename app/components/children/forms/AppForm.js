@@ -1,6 +1,9 @@
 // Include React
 var React = require("react");
 
+// Include the helpers for making API calls
+var helpers = require("../../../utils/helpers");
+
 // Creating the AppForm component
 var AppForm = React.createClass({
   
@@ -11,7 +14,7 @@ var AppForm = React.createClass({
       position: "",
       link: "",
       appDate: "",
-      value1: "other",
+      howApp: "",
       appContact: "",
       phoneDate: "",
       phoneCont: "",
@@ -20,9 +23,9 @@ var AppForm = React.createClass({
       intContact: "",
       intResult: "",
       offerDate: "",
-      value2: "blank",
+      accepted: "",
       rejectDate: "",
-      value3: "other"
+      method: ""
     };
   },
 
@@ -36,17 +39,7 @@ var AppForm = React.createClass({
     this.setState(newState);
   },
 
-  handleChangeForm1: function(event) {
-      this.setState({value1: event.target.value});
-  },
-  handleChangeForm2: function(event) {
-      this.setState({value2: event.target.value});
-  },
-  handleChangeForm3: function(event) {  
-      this.setState({value3: event.target.value});
-  },
-
-  
+/*  
   // This code handles the sending of the search terms to the parent Search component
   handleSubmit: function(event) {
     event.preventDefault();
@@ -71,6 +64,16 @@ var AppForm = React.createClass({
     console.log("inputs end");
     //this.props.postSaved(this.state.compName,this.state.position,this.state.link,this.state.appDate,this.state.appContact,this.state.phoneDate,this.state.phoneCont,this.state.phoneResult,this.state.intDate,this.state.intContact,this.state.intResult,this.state.offerDate,this.state.rejectDate);
  
+  },
+  */
+
+    handleClick: function(event) {
+    console.log("CLICKED");
+    console.log(event);
+
+    helpers.postSavedApp(event.compName, event.position, event.link, event.appDate, event.howApp, event.appContact, event.phoneDate, event.phoneCont, event.phoneResult, event.intDate, event.intContact, event.intResult, event.offerDate, event.accepted, event.rejectDate, event.method).then(function() {
+      console.log(event.compName, event.position, event.link, event.appDate, event.howApp, event.appContact, event.phoneDate, event.phoneCont, event.phoneResult, event.intDate, event.intContact, event.intResult, event.offerDate, event.accepted, event.rejectDate, event.method);
+    });
   },
 
   // Here we describe this component's render method
@@ -131,14 +134,14 @@ var AppForm = React.createClass({
               <br />              
               <h4 className="">
                 <strong>How Applied</strong>
-              </h4>              
-              <select value={this.state.value1} onChange={this.handleChangeForm1}>
-                <option value="linkedin">Linked In</option>
-                <option value="company">On Company Website</option>
-                <option value="jobboard">Job Board</option>
-                <option value="recruiter">Recruiter</option>
-                <option value="other">Recruiter</option>
-              </select>
+              </h4> 
+              <input             
+                type="text"
+                value={this.state.howApp}
+                className="form-control text-center"
+                id="howApp"
+                onChange={this.handleChange}
+              />
               <br />
               <h4 className="">
                 <strong>Contact Name</strong>
@@ -235,11 +238,13 @@ var AppForm = React.createClass({
               <h4 className="">
                 <strong>Accepted</strong>
               </h4>              
-              <select value={this.state.value2} onChange={this.handleChangeForm2}>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-                <option value="blank"></option>
-              </select>
+              <input
+                type="text"
+                value={this.state.accepted}
+                className="form-control text-center"
+                id="accepted"
+                onChange={this.handleChange}
+              />
               <hr />
               <h2 className="">
                 <strong>Rejection</strong>
@@ -257,11 +262,13 @@ var AppForm = React.createClass({
               <h4 className="">
                 <strong>Method</strong>
               </h4>              
-              <select value={this.state.value3} onChange={this.handleChangeForm3}>
-                <option value="phone">Phone</option>
-                <option value="email">EMail</option>
-                <option value="other">Other</option>
-              </select>
+              <input
+                type="text"
+                value={this.state.method}
+                className="form-control text-center"
+                id="method"
+                onChange={this.handleChange}
+              />
               <hr />
               <button
                 className="btn btn-default"
