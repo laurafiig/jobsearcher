@@ -11,7 +11,8 @@ var SurveyForm = React.createClass({
   getInitialState: function() {
     return {
       subject: "",
-      value: "",
+      compPos: "",
+      phase: "",
       comment: ""
     };
   },
@@ -38,7 +39,7 @@ var SurveyForm = React.createClass({
     console.log(this.state.comment);
     console.log("inputs end");
     this.props.updateSurvey(this.state.subject,  this.state.comment);
-    // add to submit button onSubmit={this.handleSubmit}{/*
+    // add to <form> onSubmit={this.handleSubmit}{/*
   },
 */
 
@@ -47,7 +48,7 @@ var SurveyForm = React.createClass({
     console.log("CLICKED");
     console.log(event);
 
-    helpers.postSaved(event.subject, event.comment).then(function() {
+    helpers.postSavedCom(event.subject, event.compPos, event.phase, event.comment).then(function() {
       console.log(event.comment);
     });
   },
@@ -72,9 +73,31 @@ var SurveyForm = React.createClass({
                 className="form-control text-center"
                 id="subject"
                 onChange={this.handleChange}
+                required
               />
               <br />
-              
+              <h4 className="">
+                <strong>Company/Position</strong>
+              </h4>
+              <input
+                type="text"
+                value={this.state.compPos}
+                className="form-control text-center"
+                id="compPos"
+                onChange={this.handleChange}
+              />
+              <br />
+              <h4 className="">
+                <strong>Application Phase</strong>
+              </h4>
+              <input
+                type="text"
+                value={this.state.phase}
+                className="form-control text-center"
+                id="phase"
+                onChange={this.handleChange}
+              />
+              <br />
               <h4 className="">
                 <strong>Comments</strong>
               </h4>

@@ -42,9 +42,29 @@ var helpers = {
  */ 
   
   // This will save new survey results to our database
-  postSaved: function(subject, comment) {
-    var newComment = { rev: subject, comment: comment };
+  postSavedCom: function(subject, compPos, phase, comment) {
+    var newComment = { subject: subject, compPos: compPos, phase: phase,comment: comment };
     return axios.post("/api/surveys", newComment)
+      .then(function(response) {
+        console.log("axios results", response.data._id);
+        return response.data._id;
+      });
+  },
+
+  // This will save new survey results to our database
+  postSavedLog: function(username, password) {
+    var newComment = { username: username, password: password };
+    return axios.post("/api/logins", newComment)
+      .then(function(response) {
+        console.log("axios results", response.data._id);
+        return response.data._id;
+      });
+  },
+
+  // This will save new survey results to our database
+  postSavedCom: function(compName, position, link, appDate, howApp, appContact, phoneDate, phoneCont, phoneResult, intDate, intContact, intResult, offerDate, accepted, rejectDate, method) {
+    var newComment = { company: compName, title: position , link: link, dateApp: appDate, howApp: howApp, contactApp: appContact, datePhone: phoneDate, contactPhone: phoneCont, resultPhone: phoneResult, dateInt: intDate, contactInt: intContact, resultInt: intResult, dateOffer: offerDate, Accept: accepted, dateRej: rejectDate, howRej: method, };
+    return axios.post("/api/apps", newComment)
       .then(function(response) {
         console.log("axios results", response.data._id);
         return response.data._id;

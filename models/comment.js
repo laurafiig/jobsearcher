@@ -2,7 +2,15 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var CommentSchema = new Schema({
-	rev: {
+	subject: {
+		type: String
+	},
+	
+	compPos: {
+		type: String
+	},
+	
+	phase: {
 		type: String
 	},
 	
