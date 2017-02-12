@@ -28,20 +28,19 @@ var SurveyForm = React.createClass({
 
   
 
-
+/*
   // This code handles the sending of the search terms to the parent Search component
   handleSubmit: function(event) {
     event.preventDefault();
     console.log("CLICKED");
     console.log("inputs start");
     console.log(this.state.subject);
-    //console.log(this.state.value);
     console.log(this.state.comment);
     console.log("inputs end");
-    //this.props.updateSurvey(this.state.subject,  this.state.comment);
- 
+    this.props.updateSurvey(this.state.subject,  this.state.comment);
+    // add to submit button onSubmit={this.handleSubmit}{/*
   },
-
+*/
 
   // This code handles the sending of the search terms to the parent Search component
   handleClick: function(event) {
@@ -62,7 +61,7 @@ var SurveyForm = React.createClass({
           <h2 className="text-center">Leave Feedback Here</h2>
         </div>
         <div className="panel-body text-center">
-          <form onSubmit={this.handleSubmit}>
+          <form >
             <div className="form-group">
               <h4 className="">
                 <strong>Review Subject</strong>
