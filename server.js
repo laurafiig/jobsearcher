@@ -62,6 +62,32 @@ app.post("/api/surveys", function(req, res) {
   });
 });
 
+app.post("/api/logins", function(req, res) {
+  var newLogin = new Login(req.body);
+  console.log(req.body);
+  newLogin.save(function(err, doc) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      res.send(doc);
+    }
+  });
+});
+
+app.post("/api/apps", function(req, res) {
+  var newJob = new Job(req.body);
+  console.log(req.body);
+  newJob.save(function(err, doc) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      res.send(doc);
+    }
+  });
+});
+
 // -------------------------------------------------
 
 // Listener

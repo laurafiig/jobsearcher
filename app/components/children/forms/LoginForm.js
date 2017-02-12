@@ -1,6 +1,9 @@
 //Include React
 var React = require("react");
 
+// Include the helpers for making API calls
+var helpers = require("../../../utils/helpers");
+
 //Creating the LoginForm component
 var LoginForm = React.createClass({
 	//set Initial variables to be blank
@@ -20,6 +23,7 @@ var LoginForm = React.createClass({
 		this.setState(newState);
 	},
 
+/*
 	//handles the sending of the search terms to the parent Login component
 	handleSubmit: function(event) {
 		event.preventDefault();
@@ -30,13 +34,24 @@ var LoginForm = React.createClass({
 		console.log("inputs end");
 
 	},
+*/
+
+  // This code handles the sending of the search terms to the parent Search component
+  handleClick: function(event) {
+    console.log("CLICKED");
+    console.log(event);
+
+    helpers.postSavedLog(event.username, event.password).then(function() {
+      console.log(event.username, event.password);
+    });
+  },
 
 	//describe the component's render method
 	render: function() {
 		return (
       <div className="panel panel-default">
         <div className="panel-heading">
-          <h3 className="panel-title text-center">Login Form Here</h3>
+          <h3 className="panel-title text-center">Create User Here</h3>
         </div>
         <div className="panel-body text-center">
           <form onSubmit={this.handleSubmit}>
@@ -67,7 +82,7 @@ var LoginForm = React.createClass({
               <br />
               <button 
               	className="btn btn-primary btn-lg"
-              	type="submit">Login</button>
+              	onClick={() => this.handleClick(this.state)}>Login</button>
             </div>
           </form>
         </div>
