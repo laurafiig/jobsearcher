@@ -270,10 +270,7 @@ var AppForm = React.createClass({
                 onChange={this.handleChange}
               />
               <hr />
-              <button
-                className="btn btn-default"
-                type="submit"
-              >
+              <button className="btn btn-primary" onClick={() => this.handleClick(this.state)} >
                 Submit
               </button>
             </div>
