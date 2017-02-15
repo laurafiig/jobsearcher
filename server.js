@@ -38,17 +38,16 @@ db.once("open", function() {
   console.log("Mongoose connection successful.");
 });
 
-// -------------------------------------------------
+// -------------------------------------------
 
 // Main "/" Route. This will redirect the user to our rendered React application
 app.get("/", function(req, res) {
   res.sendFile(__dirname + "/public/index.html");
 });
 
+// -------------------------------------------
 
-
-// Route to add a survey to saved list
-
+// Route to add a review to database
 app.post("/api/surveys", function(req, res) {
   var newComment = new Comment(req.body);
   console.log(req.body);
@@ -62,6 +61,22 @@ app.post("/api/surveys", function(req, res) {
   });
 });
 
+// Route to get all saved reviews
+app.get("/api/surveys", function(req, res) {
+  Comment.find({})
+    .exec(function(err, doc) {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        res.send(doc);
+      }
+    });
+});
+
+// -------------------------------------------
+
+// Route to add a user to database
 app.post("/api/logins", function(req, res) {
   var newLogin = new Login(req.body);
   console.log(req.body);
@@ -75,6 +90,9 @@ app.post("/api/logins", function(req, res) {
   });
 });
 
+// -------------------------------------------
+
+// Route to add an application to database
 app.post("/api/apps", function(req, res) {
   var newJob = new Job(req.body);
   console.log(req.body);
