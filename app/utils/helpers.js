@@ -29,7 +29,7 @@ var helpers = {
 //----------------------------
  
 
-  // This will save new survey results to our database
+  // This will save new user results to our database
   postSavedLog: function(username, password) {
     var newComment = { username: username, password: password };
     return axios.post("/api/logins", newComment)
@@ -41,7 +41,7 @@ var helpers = {
 
 //----------------------------
  
-  // This will save new survey results to our database
+  // This will save new jobs to our database
   postSavedApp: function(compName, position, link, appDate, howApp, appContact, phoneDate, phoneCont, phoneResult, intDate, intContact, intResult, offerDate, accepted, rejectDate, method) {
     var newComment = { company: compName, title: position , link: link, dateApp: appDate, howApp: howApp, contactApp: appContact, datePhone: phoneDate, contactPhone: phoneCont, resultPhone: phoneResult, dateInt: intDate, contactInt: intContact, resultInt: intResult, dateOffer: offerDate, Accept: accepted, dateRej: rejectDate, howRej: method, };
     return axios.post("/api/apps", newComment)
@@ -51,6 +51,17 @@ var helpers = {
       });
   },
 
+  // This will return any saved jobs from our database
+  getSavedApp: function() {
+    return axios.get("/api/apps")
+      .then(function(results) {
+        console.log("axios results", results);
+        return results;
+      });
+  },
+
+//----------------------------
+ 
  /* 
   // This will remove saved articles from our database
   deleteSaved: function(title, data, url) {

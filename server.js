@@ -106,6 +106,19 @@ app.post("/api/apps", function(req, res) {
   });
 });
 
+// Route to get all saved applications
+app.get("/api/apps", function(req, res) {
+  Job.find({})
+    .exec(function(err, doc) {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        res.send(doc);
+      }
+    });
+});
+
 // -------------------------------------------------
 
 // Listener
