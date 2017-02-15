@@ -39,6 +39,14 @@ var helpers = {
       });
   },
 
+  // This will return saved login data
+  getSavedLog: function() {
+    return axios.get("/api/logins").then(function(results) {
+      console.log("axios results", results);
+        return results;
+    });
+  },
+
 //----------------------------
  
   // This will save new jobs to our database

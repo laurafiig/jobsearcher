@@ -90,6 +90,19 @@ app.post("/api/logins", function(req, res) {
   });
 });
 
+// Route to retrieve login data.
+app.get("/api/logins", function(req, res) {
+  Login.find({})
+    .exec(function(err, doc) {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        res.send(doc);
+      }
+    });
+});
+
 // -------------------------------------------
 
 // Route to add an application to database

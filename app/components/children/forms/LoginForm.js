@@ -10,7 +10,9 @@ var LoginForm = React.createClass({
 	getInitialState: function() {
 		return {
 			username: "",
-			password: ""
+			password: "",
+      userLog: "",
+      passLog: ""
 		};
 	},
 
@@ -46,13 +48,22 @@ var LoginForm = React.createClass({
     });
   },
 
+  handleElse: function(event) {
+    console.log("Clicked");
+    console.log(event);
+
+    helpers.getSavedLog().then(function(loginData) {
+      console.log(event.userLog, event.passLog);
+      this.setState({userLog: event.userLog, passLog: event.passLog});
+    }.bind(this));
+  },
+
 	//describe the component's render method
 	render: function() {
 		return (
-      <div className="panel panel-default">
-        <div className="panel-heading">
+      <div className="panel panel-default row">
+        <div className="panel-heading col-sm-6">
           <h3 className="panel-title text-center">Create User Here</h3>
-        </div>
         <div className="panel-body text-center">
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
@@ -86,10 +97,49 @@ var LoginForm = React.createClass({
             </div>
           </form>
         </div>
-      </div>
+        </div>
+
+        <div className="panel-heading col-sm-6">
+          <h3 className="panel-title text-center">Returning User Login Here</h3>
+        <div className="panel-body text-center">
+          <form onSubmit={this.handleSubmit}>
+            <div className="form-group">
+              <h4 className="">
+                <strong>Username</strong>
+              </h4>
+              <input
+                type="text"
+                value={this.state.userLog}
+                className="form-control text-center"
+                id="userLog"
+                onChange={this.handleChange}
+                
+              />
+              <br />
+              <h4 className="">
+                <strong>Password</strong>
+              </h4>
+              <input
+                type="password"
+                value={this.state.passLog}
+                className="form-control text-center"
+                id="passLog"
+                onChange={this.handleChange}
+                
+              />
+              <br />
+              <button 
+                className="btn btn-primary btn-lg"
+                onClick={() => this.handleElse(this.state)}>Login</button>
+            </div>
+          </form>
+        </div>
+        </div>
+
+    </div>
     );
   }
 });
 
-// Export the component back for use in other files
+// We export the Login form
 module.exports = LoginForm;
