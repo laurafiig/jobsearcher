@@ -7,8 +7,6 @@ var helpers = require("../../utils/helpers");
 // Creating the Reviews component
 var Reviews = React.createClass({
 
-
-
   getInitialState: function() {
     return { savedComments: "" };
   },
@@ -21,13 +19,12 @@ var Reviews = React.createClass({
     }.bind(this));
   },
 
-/*
   // This code handles the deleting saved comments from our database
   handleClick: function(item) {
     console.log("CLICKED");
     console.log(item);
     // Delete the list!
-    helpers.deleteSaved(item.title, item.date, item.url).then(function() {
+    helpers.deleteSavedCom(item._id, item.subject, item.compPos, item.phase, item.comment).then(function() {
       // Get the revised list!
       helpers.getSavedCom().then(function(commentData) {
         this.setState({ savedComments: commentData.data });
@@ -35,7 +32,6 @@ var Reviews = React.createClass({
       }.bind(this));
     }.bind(this));
   },
-*/
 
   // A helper method for rendering the HTML when we have no saved comments
   renderEmpty: function() {
@@ -59,6 +55,10 @@ var Reviews = React.createClass({
             <h3>
               <span>
                 <em>{comment.subject}</em>
+              </span>
+              <span className="btn-group-vertical pull-right">
+              <button className="btn btn-primary">View/Update</button>
+              <button className="btn btn-warning" onClick={() => this.handleClick(comment)}>Delete</button>
               </span>
             </h3>
             <h4>
@@ -112,8 +112,6 @@ var Reviews = React.createClass({
     return this.renderContainer();
   }
 });
-
-
 
 // Export the component back for use in other files
 module.exports = Reviews;

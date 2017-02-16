@@ -74,6 +74,19 @@ app.get("/api/surveys", function(req, res) {
     });
 });
 
+// Route to delete a review
+app.delete("/api/surveys/", function(req, res) {
+  var id = req.param("_id");
+  Comment.find({ _id: id }).remove().exec(function(err) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      res.send("Deleted");
+    }
+  });
+});
+
 // -------------------------------------------
 
 // Route to add a user to database
@@ -130,6 +143,19 @@ app.get("/api/apps", function(req, res) {
         res.send(doc);
       }
     });
+});
+
+// Route to delete a job
+app.delete("/api/apps/", function(req, res) {
+  var id = req.param("_id");
+  Job.find({ _id: id }).remove().exec(function(err) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      res.send("Deleted");
+    }
+  });
 });
 
 // -------------------------------------------------

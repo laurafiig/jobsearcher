@@ -25,9 +25,20 @@ var helpers = {
       });
   },
  
+  // This will remove saved articles from our database
+  deleteSavedCom: function(_id) {
+    return axios.delete("/api/surveys", {
+      params: {
+        "_id": _id
+      }
+    })
+    .then(function(results) {
+      console.log("axios results", results);
+      return results;
+    });
+  },
 
 //----------------------------
- 
 
   // This will save new user results to our database
   postSavedLog: function(username, password) {
@@ -68,16 +79,11 @@ var helpers = {
       });
   },
 
-//----------------------------
- 
- /* 
-  // This will remove saved articles from our database
-  deleteSaved: function(title, data, url) {
-    return axios.delete("/api/saved", {
+  // This will remove saved jobs from our database
+  deleteSavedApp: function(_id) {
+    return axios.delete("/api/apps", {
       params: {
-        "title": title,
-        "data": data,
-        "url": url
+        "_id": _id
       }
     })
     .then(function(results) {
@@ -85,10 +91,8 @@ var helpers = {
       return results;
     });
   }
-*/
 
 };
-
 
 // We export the helpers function
 module.exports = helpers;

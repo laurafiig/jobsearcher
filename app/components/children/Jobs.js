@@ -19,13 +19,13 @@ var Jobs = React.createClass({
     }.bind(this));
   },
 
-/*
+
   // This code handles the deleting saved jobs from our database
   handleClick: function(item) {
     console.log("CLICKED");
     console.log(item);
     // Delete the list!
-    helpers.deleteSaved(item.title, item.date, item.url).then(function() {
+    helpers.deleteSavedApp(item._id, item.compName, item.position, item.link, item.appDate, item.howApp, item.appContact, item.phoneDate, item.phoneCont, item.phoneResult, item.intDate, item.intContact, item.intResult, item.offerDate, item.accepted, item.rejectDate, item.method).then(function() {
       // Get the revised list!
       helpers.getSavedApp().then(function(jobData) {
         this.setState({ savedJobs: jobData.data });
@@ -33,7 +33,6 @@ var Jobs = React.createClass({
       }.bind(this));
     }.bind(this));
   },
-*/
 
   // A helper method for rendering the HTML when we have no saved jobs
   renderEmpty: function() {
@@ -60,18 +59,22 @@ var Jobs = React.createClass({
               <span>
                 <em>{job.company}</em>
               </span>
+              <span className="btn-group pull-right">
+                <button className="btn btn-primary">View/Update</button>
+              </span>
             </h3>
             <h3>
               <span>
                 <em>{job.title}</em>
               </span>
+              <span className="btn-group pull-right">
+                <button className="btn btn-warning" onClick={() => this.handleClick(job)}>Delete</button>
+              </span>
             </h3>
             <h4>
               <span>
+                <br />
                 <em>Date Applied: {job.dateApp}</em>
-              </span>
-              <span className="btn-group pull-right">
-                <button className="btn btn-primary">View/Update</button>
               </span>
             </h4>
           </li>
