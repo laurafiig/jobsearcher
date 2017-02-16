@@ -12,7 +12,7 @@ var JobSchema = new Schema({
 		type: String
 	},
 	dateApp: {
-		type: Date
+		type: String
 	},
 	HowApp: {
 		type: String
@@ -21,7 +21,7 @@ var JobSchema = new Schema({
 		type: String
 	},
 	datePhone: {
-		type: Date
+		type: String
 	},
 	contactPhone: {
 		type: String
@@ -30,7 +30,7 @@ var JobSchema = new Schema({
 		type: String
 	},
 	dateInt: {
-		type: Date
+		type: String
 	},
 	contactInt: {
 		type: String
@@ -39,13 +39,13 @@ var JobSchema = new Schema({
 		type: String
 	},
 	dateOffer: {
-		type: Date
+		type: String
 	},
 	Accept: {
 		type: Boolean
 	},
 	dateRej: {
-		type: Date
+		type: String
 	},
 	howRej: {
 		type: String

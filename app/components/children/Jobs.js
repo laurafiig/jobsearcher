@@ -50,7 +50,9 @@ var Jobs = React.createClass({
 
   // A helper method for mapping through our jobs and outputting some HTML
   renderJobs: function() {
+
     return this.state.savedJobs.map(function(job, index) {
+
       return (
         <div key={index}>
           <li className="list-group-item">
