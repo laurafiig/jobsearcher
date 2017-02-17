@@ -3,6 +3,10 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
+//because mongoose mpromise is deprecated,
+var Promise = require("bluebird");
+
+mongoose.Promise = Promise;
 
 // Require  Schema
 var Comment = require("./models/comment.js");
