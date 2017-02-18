@@ -110,9 +110,11 @@ app.post("/api/logins", function(req, res) {
 // Route to retrieve login data.
 app.get("/api/logins", function(req, res) {
   Login.find({})
+    //string a call to populate the entry with the job and comments from the same login
+    .populate("comments", "apps")
     .exec(function(err, doc) {
       if (err) {
-        console.log(err);
+        res.send(err);
       }
       else {
         res.send(doc);
