@@ -15,7 +15,7 @@ var Main = React.createClass({
           <p className="text-center">
             <em>Track jobs you have applied for and give your feedback.</em>
           </p>
-          <a href="#/Choice" className="btn btn-primary btn-lg">Home</a>
+          {/*<a href="#/Choice" className="btn btn-primary btn-lg">Home</a>*/}
         </div>
         <div className="row">
           {/* This code will dump the correct Child Component */}

@@ -84,6 +84,23 @@ var Reviews = React.createClass({
       <div className="main-container">
         <div className="row">
           <div className="col-lg-12">
+            
+      <div className="panel panel-default">
+        <div className="panel-heading">
+          <h3 className="panel-title text-center">What would you like to do?</h3>
+        </div>
+        <div className="panel-body text-center">
+              <a href="#/App" className="btn btn-primary btn-lg">New App</a>
+              <a>          </a>
+              <a href="#/Jobs" className="btn btn-primary btn-lg">See Apps</a>
+              <a>          </a>
+              <a href="#Survey" className="btn btn-primary btn-lg">New Review</a>
+              <a>          </a>
+              <a href="#/Reviews" className="btn btn-primary btn-lg">See Reviews</a>
+                            
+        </div>
+      </div>
+
             <div className="panel panel-primary">
               <div className="panel-heading">
                 <h1 className="panel-title">

@@ -81,9 +81,11 @@ var Login = React.createClass({
                 
               />
               <br />
-              <button 
+              <a href="#/Choice" 
+                
                 className="btn btn-primary btn-lg"
-                onClick={() => this.handleClick(this.state)}>Login</button>
+                onClick={() => this.handleClick(this.state)}>Login
+                </a>
             </div>
           </form>
         </div>
@@ -118,9 +120,11 @@ var Login = React.createClass({
                 
               />
               <br />
-              <button 
+              <a href="#/Choice" 
+                
                 className="btn btn-primary btn-lg"
-                onClick={() => this.handleElse(this.state)}>Login</button>
+                onClick={() => this.handleElse(this.state)}>Login
+                </a>
             </div>
           </form>
         </div>
