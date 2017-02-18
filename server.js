@@ -53,9 +53,22 @@ app.get("/", function(req, res) {
 
 // Route to add a review to database
 app.post("/api/surveys", function(req, res) {
-  var newComment = new Comment(req.body);
+  
+  
   console.log(req.body);
-  newComment.save(function(err, doc) {
+  Comment.findOneAndUpdate({
+      subject: req.body.subject,
+      compPos: req.body.compPos,
+      phase: req.body.phase,
+      comment: req.body.comment
+  }, {
+    $set: {
+      subject: req.body.subject,
+      compPos: req.body.compPos,
+      phase: req.body.phase,
+      comment: req.body.comment
+    }
+  }, { upsert: true }).exec(function(err, doc) {
     if (err) {
       console.log(err);
     }
