@@ -57,12 +57,14 @@ app.post("/api/surveys", function(req, res) {
   
   console.log(req.body);
   Comment.findOneAndUpdate({
+      login: req.body.login,
       subject: req.body.subject,
       compPos: req.body.compPos,
       phase: req.body.phase,
       comment: req.body.comment
   }, {
     $set: {
+      login: req.body.login,
       subject: req.body.subject,
       compPos: req.body.compPos,
       phase: req.body.phase,
@@ -143,6 +145,7 @@ app.post("/api/apps", function(req, res) {
   
   console.log(req.body);
   Job.findOneAndUpdate({
+      login: req.body.login,
       company: req.body.compName,
       title: req.body.position,
       link: req.body.link,
@@ -161,6 +164,7 @@ app.post("/api/apps", function(req, res) {
       howRej: req.body.method
   }, {
     $set: {
+      login: req.body.login,
       company: req.body.compName,
       title: req.body.position,
       link: req.body.link,

@@ -7,8 +7,8 @@ var helpers = {
 //----------------------------
   
   // This will save new survey results to our database
-  postSavedCom: function(_id, subject, compPos, phase, comment) {
-    var newComment = { _id: _id, subject: subject, compPos: compPos, phase: phase,comment: comment };
+  postSavedCom: function(subject, compPos, phase, comment) {
+    var newComment = {subject: subject, compPos: compPos, phase: phase,comment: comment };
     return axios.post("/api/surveys", newComment)
       .then(function(response) {
         console.log(response)
