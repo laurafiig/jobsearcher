@@ -35,6 +35,23 @@ var Reviews = React.createClass({
     }.bind(this));
   },
 
+  // This code handles the deleting saved comments from our database
+  handleClick2: function(item) {
+    console.log("CLICKED");
+    console.log(item);
+    helpers.postSavedCom(item.subject, item.compPos, item.phase, item.comment).then(function() {
+      console.log(item.subject);
+    });
+      /*// Here we capture 
+    event.preventDefault();
+    console.log("CLICKED");
+    this.props.updateComment(this.state.subject, this.state.compPos, this.state.phase, this.state.comment);
+    console.log("submit form")
+    console.log(this.state.subject)
+    console.log(this.state.comment)
+    console.log("end submit form")*/
+  },
+ 
   // A helper method for rendering the HTML when we have no saved comments
   renderEmpty: function() {
     return (
@@ -59,7 +76,7 @@ var Reviews = React.createClass({
                 <em>{comment.subject}</em>
               </span>
               <span className="btn-group-vertical pull-right">
-              <button className="btn btn-primary">View/Update</button>
+              <a href="#Survey" className="btn btn-primary" onClick={() => this.handleClick2(comment)}>View/Update</a>
               <button className="btn btn-warning" onClick={() => this.handleClick(comment)}>Delete</button>
               </span>
             </h3>

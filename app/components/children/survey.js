@@ -19,6 +19,34 @@ var Survey = React.createClass({
     };
   },
 
+ /*   componentDidMount: function(item) {
+    console.log("CLICKED HERE");
+    console.log(item);
+    helpers.getSavedCom(item.subject, item.compPos, item.phase, item.comment).then(function() {
+      console.log("SUBJECT", item.subject);
+    return {
+      subject: this.state.subject,
+      compPos: this.state.compPos,
+      phase: this.state.phase,
+      comment: this.state.comment
+    };
+
+    });
+    
+  },*/
+
+// This code handles the sending of the search terms to the parent Search component
+  handleClick: function(item) {
+    console.log("CLICKED");
+    console.log(item);
+
+    helpers.postSaved(item.headline.main, item.pub_date, item.web_url).then(function() {
+      console.log(item.web_url);
+    });
+  },
+
+
+
   // Whenever we detect ANY change in the textbox, we register it.
   handleChange: function(event) {
     console.log("TEXT CHANGED");
