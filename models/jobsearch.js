@@ -22,7 +22,7 @@ var JobSchema = new Schema({
 	dateApp: {
 		type: String
 	},
-	HowApp: {
+	howApp: {
 		type: String
 	},
 	contactApp: {

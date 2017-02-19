@@ -139,14 +139,52 @@ app.get("/api/logins", function(req, res) {
 
 // Route to add an application to database
 app.post("/api/apps", function(req, res) {
-  var newJob = new Job(req.body);
+  
+  
   console.log(req.body);
-  newJob.save(function(err, doc) {
+  Job.findOneAndUpdate({
+      company: req.body.compName,
+      title: req.body.position,
+      link: req.body.link,
+      dateApp: req.body.appDate,
+      howApp: req.body.howApp,
+      contactApp: req.body.appContact,
+      datePhone: req.body.phoneDate,
+      contactPhone: req.body.phoneCont,
+      resultPhone: req.body.phoneResult,
+      dateInt: req.body.intDate,
+      contactInt: req.body.intContact,
+      resultInt: req.body.intResult,
+      dateOffer: req.body.offerDate,
+      Accept: req.body.accepted,
+      dateRej: req.body.rejectDate,
+      howRej: req.body.method
+  }, {
+    $set: {
+      company: req.body.compName,
+      title: req.body.position,
+      link: req.body.link,
+      dateApp: req.body.appDate,
+      howApp: req.body.howApp,
+      contactApp: req.body.appContact,
+      datePhone: req.body.phoneDate,
+      contactPhone: req.body.phoneCont,
+      resultPhone: req.body.phoneResult,
+      dateInt: req.body.intDate,
+      contactInt: req.body.intContact,
+      resultInt: req.body.intResult,
+      dateOffer: req.body.offerDate,
+      Accept: req.body.accepted,
+      dateRej: req.body.rejectDate,
+      howRej: req.body.method
+    }
+  }, { upsert: true }).exec(function(err, doc) {
     if (err) {
       console.log(err);
     }
     else {
       res.send(doc);
+      console.log(doc);
     }
   });
 });
