@@ -93,6 +93,20 @@ app.get("/api/surveys", function(req, res) {
     });
 });
 
+// Route to get one saved reviews
+app.get("/api/surveys", function(req, res) {
+  var id = req.param("_id");
+  Comment.find({ _id: id })
+    .exec(function(err, doc) {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        res.send(doc);
+      }
+    });
+});
+
 // Route to delete a review
 app.delete("/api/surveys/", function(req, res) {
   var id = req.param("_id");

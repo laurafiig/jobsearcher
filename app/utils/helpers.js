@@ -25,6 +25,19 @@ var helpers = {
         return results;
       });
   },
+
+    // This will return a saved survey from our database
+  getSavedOneCom: function(_id) {
+    return axios.get("/api/surveys", {
+      params: {
+        "_id": _id
+      }
+    })
+      .then(function(results) {
+        console.log("axios results", results);
+        return results;
+      });
+  },
  
   // This will remove saved articles from our database
   deleteSavedCom: function(_id) {

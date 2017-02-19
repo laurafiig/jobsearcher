@@ -1,10 +1,10 @@
 // Include React
 var React = require("react");
-
 // Include the Helper (for the saved recall)
 var helpers = require("../../utils/helpers");
-
+//include button component
 var Choice = require("./Choice");
+
 
 // Creating the Reviews component
 var Reviews = React.createClass({
@@ -41,21 +41,22 @@ var Reviews = React.createClass({
     }.bind(this));
   },
 
-  // This code handles the deleting saved comments from our database
+  // This code handles the updating saved comments from our database
   handleClick2: function(item) {
-    console.log("CLICKED");
-    console.log(item);
-    helpers.postSavedCom(item.subject, item.compPos, item.phase, item.comment).then(function() {
-      console.log(item.subject);
-    });
-      /*// Here we capture 
-    event.preventDefault();
-    console.log("CLICKED");
-    this.props.updateComment(this.state.subject, this.state.compPos, this.state.phase, this.state.comment);
-    console.log("submit form")
-    console.log(this.state.subject)
-    console.log(this.state.comment)
-    console.log("end submit form")*/
+//    console.log("FOR UPDATE");
+//    console.log(item);
+//    console.log("subject:", item.subject);
+//    console.log("END FOR UPDATE");
+    helpers.getSavedOneCom(item._id, item.subject, item.compPos, item.phase, item.comment).then(function() {
+      console.log(item)
+      return { 
+      subject: item.subject,
+      compPos: item.compPos,
+      phase: item.phase,
+      comment: item.comment
+     };
+    }.bind(this));
+    
   },
 
     // Whenever we detect ANY change in the textbox, we register it.
@@ -74,8 +75,12 @@ var Reviews = React.createClass({
     console.log(event);
 
     helpers.postSavedCom(event.subject, event.compPos, event.phase, event.comment).then(function() {
-      console.log(event.comment);
-    });
+      // Get the revised list!
+      helpers.getSavedCom().then(function(commentData) {
+        this.setState({ savedComments: commentData.data });
+        console.log("saved results", commentData.data);
+      }.bind(this));
+    }.bind(this));
   },
  
   // A helper method for rendering the HTML when we have no saved comments
@@ -126,94 +131,102 @@ var Reviews = React.createClass({
   // A helper method for rendering a container and all of our artiles inside
   renderContainer: function() {
     return (
-      <div className="main-container">
-        <div className="row">
-          <div className="col-lg-12">
-            
-      <Choice />
-          </div>
-        </div>
-          <div className="row">
-            <div className="col-sm-6">
-            <div className="panel panel-primary">
-              <div className="panel-heading">
-                <h1 className="panel-title">
-                  <strong>
-                    <i className="fa fa-download" aria-hidden="true"></i> Saved Comments</strong>
-                </h1>
-              </div>
-              <div className="panel-body">
-                <ul className="list-group">
-                  {this.renderComments()}
-                </ul>
-              </div>
-              </div>
 
-            </div>
-            
 
-            <div className="col-sm-6">
-            <div className="panel panel-default">
-              <div className="panel-heading">
-                <h2 className="text-center">Leave Feedback Here</h2>
-              </div>
-              <div className="panel-body text-center">
-                <form >
-                  <div className="form-group">
-                    <h4 className="">
-                      <strong>Review Subject</strong>
-                    </h4>
-                  </div>
-                    <input
-                      type="text"
-                      value={this.state.subject}
-                      className="form-control text-center"
-                      id="subject"
-                      onChange={this.handleChange}
-                      required
-                    />
-                    <br />
-                    <h4 className="">
-                      <strong>Company/Position</strong>
-                    </h4>
-                    <input
-                      type="text"
-                      value={this.state.compPos}
-                      className="form-control text-center"
-                      id="compPos"
-                      onChange={this.handleChange}
-                    />
-                    <br />
-                    <h4 className="">
-                      <strong>Application Phase</strong>
-                    </h4>
-                    <input
-                      type="text"
-                      value={this.state.phase}
-                      className="form-control text-center"
-                      id="phase"
-                      onChange={this.handleChange}
-                    />
-                    <br />
-                    <h4 className="">
-                      <strong>Comments</strong>
-                    </h4>
-                    <textarea
-                      type="text"
-                      value={this.state.comment}
-                      className="form-control text-center"
-                      id="comment"
-                      onChange={this.handleChange}
-                      required
-                    />
-                    <br />
-                  <button  className="btn btn-primary" onClick={() => this.handleClick3(this.state)}>Submit</button>
-              </form>
-            </div>
-            </div>
-            </div>
-          </div>
-        </div>
+<div className="main-container">
+
+<div className="row">
+  <div className="col-lg-12">
+    <Choice />
+  </div>
+</div>
+
+  <div className="row">
+  
+  <div className="col-sm-6">
+    <div className="panel panel-primary">
+      
+      <div className="panel-heading">
+      <h1 className="panel-title">
+      <strong>
+      <i className="fa fa-download" aria-hidden="true"></i> Saved Comments</strong>
+      </h1>
+      </div>
+
+      <div className="panel-body">
+      <ul className="list-group">
+      {this.renderComments()}
+      </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div className="col-sm-6">
+  <div className="panel panel-default">
+  <div className="panel-heading">
+  <h2 className="text-center">Leave Feedback Here</h2>
+  </div>
+  <div className="panel-body text-center">
+  <form >
+  <div className="form-group">
+  <h4 className="">
+  <strong>Review Subject</strong>
+  </h4>
+  </div>
+  <input
+  type="text"
+  value={this.state.subject}
+  className="form-control text-center"
+  id="subject"
+  onChange={this.handleChange}
+  required
+  />
+  <br />
+  <h4 className="">
+  <strong>Company/Position</strong>
+  </h4>
+  <input
+  type="text"
+  value={this.state.compPos}
+  className="form-control text-center"
+  id="compPos"
+  onChange={this.handleChange}
+  />
+  <br />
+  <h4 className="">
+  <strong>Application Phase</strong>
+  </h4>
+  <input
+  type="text"
+  value={this.state.phase}
+  className="form-control text-center"
+  id="phase"
+  onChange={this.handleChange}
+  />
+  <br />
+  <h4 className="">
+  <strong>Comments</strong>
+  </h4>
+  <textarea
+  type="text"
+  value={this.state.comment}
+  className="form-control text-center"
+  id="comment"
+  onChange={this.handleChange}
+  required
+  />
+  <br />
+  <button  className="btn btn-primary" onClick={() => this.handleClick3(this.state)}>Submit</button>
+  </form>
+  </div>
+  </div>
+  </div>
+  </div>
+
+</div>
+
+
     );
   },
   // Our render method. Utilizing a few helper methods to keep this logic clean
