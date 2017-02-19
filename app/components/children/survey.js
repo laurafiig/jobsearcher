@@ -35,18 +35,6 @@ var Survey = React.createClass({
     
   },*/
 
-// This code handles the sending of the search terms to the parent Search component
-  handleClick: function(item) {
-    console.log("CLICKED");
-    console.log(item);
-
-    helpers.postSaved(item.headline.main, item.pub_date, item.web_url).then(function() {
-      console.log(item.web_url);
-    });
-  },
-
-
-
   // Whenever we detect ANY change in the textbox, we register it.
   handleChange: function(event) {
     console.log("TEXT CHANGED");
