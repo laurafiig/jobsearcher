@@ -10,52 +10,52 @@ var JobSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: "Login"
 	}],
-	company: {
+	compName: {
 		type: String
 	},
-	title: {
+	position: {
 		type: String
 	},
 	link: {
 		type: String
 	},
-	dateApp: {
+	appDate: {
 		type: String
 	},
 	howApp: {
 		type: String
 	},
-	contactApp: {
+	appContact: {
 		type: String
 	},
-	datePhone: {
+	phoneDate: {
 		type: String
 	},
-	contactPhone: {
+	phoneCont: {
 		type: String
 	},
-	resultPhone: {
+	phoneResult: {
 		type: String
 	},
-	dateInt: {
+	intDate: {
 		type: String
 	},
-	contactInt: {
+	intContact: {
 		type: String
 	},
-	resultInt: {
+	intResult: {
 		type: String
 	},
-	dateOffer: {
+	offerDate: {
 		type: String
 	},
-	Accept: {
+	accepted: {
 		type: Boolean
 	},
-	dateRej: {
+	rejectDate: {
 		type: String
 	},
-	howRej: {
+	method: {
 		type: String
 	}
 });

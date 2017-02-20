@@ -76,7 +76,7 @@ var helpers = {
  
   // This will save new jobs to our database
   postSavedApp: function(compName, position, link, appDate, howApp, appContact, phoneDate, phoneCont, phoneResult, intDate, intContact, intResult, offerDate, accepted, rejectDate, method) {
-    var newComment = { company: compName, title: position , link: link, dateApp: appDate, howApp: howApp, contactApp: appContact, datePhone: phoneDate, contactPhone: phoneCont, resultPhone: phoneResult, dateInt: intDate, contactInt: intContact, resultInt: intResult, dateOffer: offerDate, Accept: accepted, dateRej: rejectDate, howRej: method, };
+    var newComment = { compName: compName, position: position , link: link, dateApp: appDate, howApp: howApp, contactApp: appContact, datePhone: phoneDate, contactPhone: phoneCont, resultPhone: phoneResult, dateInt: intDate, contactInt: intContact, resultInt: intResult, dateOffer: offerDate, Accept: accepted, dateRej: rejectDate, howRej: method, };
     return axios.post("/api/apps", newComment)
       .then(function(response) {
         console.log("axios results", response.data._id);

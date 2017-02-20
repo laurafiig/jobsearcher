@@ -130,7 +130,7 @@ var Jobs = React.createClass({
           <li className="list-group-item">
             <h3>
               <span>
-                <em>{job.company}</em>
+                <em>{job.compName}</em>
               </span>
               <span className="btn-group pull-right">
                 <button className="btn btn-primary" onClick={() => this.handleClick2(job)}>View/Update</button>
@@ -147,7 +147,7 @@ var Jobs = React.createClass({
             <h4>
               <span>
                 <br />
-                <em>Date Applied: {job.dateApp}</em>
+                <em>Date Applied: {job.appDate}</em>
               </span>
             </h4>
           </li>
