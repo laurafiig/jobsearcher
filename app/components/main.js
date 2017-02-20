@@ -10,12 +10,11 @@ var Main = React.createClass({
   render: function() {
     return (
       <div className="container">
-        <div className="jumbotron">
-          <h2 className="text-center">Job Search Helper!</h2>
+        <div className="jumbotron bg-dark">
+          <h1 className="text-center">Job Search Helper!</h1>
           <p className="text-center">
             <em>Track jobs you have applied for and give your feedback.</em>
           </p>
-          {/*<a href="#/Choice" className="btn btn-primary btn-lg">Home</a>*/}
         </div>
         <div className="row">
           {/* This code will dump the correct Child Component */}
