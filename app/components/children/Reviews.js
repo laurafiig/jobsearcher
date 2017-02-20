@@ -47,15 +47,14 @@ var Reviews = React.createClass({
 //    console.log(item);
 //    console.log("subject:", item.subject);
 //    console.log("END FOR UPDATE");
-    helpers.getSavedOneCom(item._id, item.subject, item.compPos, item.phase, item.comment).then(function() {
+    
       console.log(item)
-      return { 
+      this.setState({
       subject: item.subject,
       compPos: item.compPos,
       phase: item.phase,
       comment: item.comment
-     };
-    }.bind(this));
+    });
     
   },
 
