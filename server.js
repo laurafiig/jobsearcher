@@ -220,6 +220,20 @@ app.get("/api/apps", function(req, res) {
     });
 });
 
+// Route to get one saved application
+app.get("/api/apps", function(req, res) {
+  var id = req.param("_id");
+  Comment.find({ _id: id })
+    .exec(function(err, doc) {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        res.send(doc);
+      }
+    });
+});
+
 // Route to delete a job
 app.delete("/api/apps/", function(req, res) {
   var id = req.param("_id");

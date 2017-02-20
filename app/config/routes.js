@@ -22,12 +22,10 @@ var IndexRoute = router.IndexRoute;
 var Main = require("../components/Main");
 // Here we include all of the sub-components
 var Choice = require("../components/children/Choice");
-var App = require("../components/children/App");
 var Jobs = require("../components/children/Jobs");
 // xxxxx this one (Login) may go away xxxxx //
 var Login = require("../components/children/Login");
 var Reviews = require("../components/children/Reviews");
-var Survey = require("../components/children/Survey");
 
 // Export the Routes
 module.exports = (
@@ -45,13 +43,7 @@ module.exports = (
       <Route path="Choice" component={Choice} />
 
       {/* If user selects then show the appropriate component*/}
-      <Route path="App" component={App} />
-
-      {/* If user selects then show the appropriate component*/}
       <Route path="Jobs" component={Jobs} />
-
-      {/* If user selects then show the appropriate component*/}
-      <Route path="Survey" component={Survey} />
 
       {/* If user selects then show the appropriate component*/}
       <Route path="Reviews" component={Reviews} />

@@ -68,7 +68,7 @@ var Reviews = React.createClass({
     this.setState(newState);
   },
 
-    // This code handles the sending of the search terms to the parent Search component
+    // This code handles the sending of the search terms to the list.
   handleClick3: function(event) {
     console.log("CLICKED");
     console.log(event);
@@ -130,8 +130,6 @@ var Reviews = React.createClass({
   // A helper method for rendering a container and all of our artiles inside
   renderContainer: function() {
     return (
-
-
 <div className="main-container">
 
 <div className="row">

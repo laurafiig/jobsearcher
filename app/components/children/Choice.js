@@ -12,13 +12,9 @@ var Choice = React.createClass({
           <h3 className="panel-title text-center">What would you like to do?</h3>
         </div>
         <div className="panel-body text-center">
-              <a href="#/App" className="btn btn-primary btn-lg">New App</a>
+              <a href="#/Jobs" className="btn btn-primary btn-lg">Applications</a>
               <a>          </a>
-              <a href="#/Jobs" className="btn btn-primary btn-lg">See Apps</a>
-              <a>          </a>
-              <a href="#Survey" className="btn btn-primary btn-lg">New Review</a>
-              <a>          </a>
-              <a href="#/Reviews" className="btn btn-primary btn-lg">See Reviews</a>
+              <a href="#/Reviews" className="btn btn-primary btn-lg">Reviews</a>
                             
         </div>
       </div>
