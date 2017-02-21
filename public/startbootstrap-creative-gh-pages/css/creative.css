@@ -43,15 +43,15 @@ p {
   line-height: 1.5;
   margin-bottom: 20px;
 }
-.bg-primary {
-  background-color: #F05F40;
-}
 .bg-dark {
   background-color: #222222;
   color: white;
 }
 .bg-white {
   background-color: white;
+}
+.bg-photo {
+  background-image: url(../img/classified-ad-Stock-Photo.jpg);
 }
 .text-faded {
   color: rgba(255, 255, 255, 0.7);
@@ -426,6 +426,6 @@ img::-moz-selection {
 body {
   webkit-tap-highlight-color: #222222;
 }
-body .bg-photo {
-  background-image: url(../img/classified-ad-Stock-Photo.jpg);
+body .bg-pattern {
+  background-image: url(../img/ps_neutral/ps_neutral.png);
 }

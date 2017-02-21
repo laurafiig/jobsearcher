@@ -53,15 +53,22 @@ app.get("/", function(req, res) {
 
 // Route to add a review to database
 app.post("/api/surveys", function(req, res) {
-  
-  
+  var newComment = new Comment(req.body);
   console.log(req.body);
-  Comment.findOneAndUpdate({
-      login: req.body.login,
-      subject: req.body.subject,
-      compPos: req.body.compPos,
-      phase: req.body.phase,
-      comment: req.body.comment
+  newComment.save(function(err, doc) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      res.send(doc);
+    }
+  });
+});
+// Route to update a review to database
+app.post("/api/surveys/id", function(req, res) {
+  console.log("WHY!!!!", req.body);
+  Comment.update({
+      _id: req.body._id
   }, {
     $set: {
       login: req.body.login,
@@ -70,7 +77,7 @@ app.post("/api/surveys", function(req, res) {
       phase: req.body.phase,
       comment: req.body.comment
     }
-  }, { upsert: true }).exec(function(err, doc) {
+  },function(err, doc) {
     if (err) {
       console.log(err);
     }
@@ -93,19 +100,6 @@ app.get("/api/surveys", function(req, res) {
     });
 });
 
-// Route to get one saved reviews
-app.get("/api/surveys", function(req, res) {
-  var id = req.param("_id");
-  Comment.find({ _id: id })
-    .exec(function(err, doc) {
-      if (err) {
-        console.log(err);
-      }
-      else {
-        res.send(doc);
-      }
-    });
-});
 
 // Route to delete a review
 app.delete("/api/surveys/", function(req, res) {

@@ -15,7 +15,8 @@ var Reviews = React.createClass({
       subject: "",
       compPos: "",
       phase: "",
-      comment: ""
+      comment: "",
+      _id:""
      };
   },
 
@@ -47,17 +48,19 @@ var Reviews = React.createClass({
 //    console.log(item);
 //    console.log("subject:", item.subject);
 //    console.log("END FOR UPDATE");
-    
-      console.log(item)
+      console.log("ITEM!!!", item)
+      
+      
       this.setState({
       subject: item.subject,
       compPos: item.compPos,
       phase: item.phase,
-      comment: item.comment
+      comment: item.comment,
+      _id: item._id
     });
     
   },
-
+  
     // Whenever we detect ANY change in the textbox, we register it.
   handleChange: function(event) {
     console.log("TEXT CHANGED");
@@ -72,15 +75,28 @@ var Reviews = React.createClass({
   handleClick3: function(event) {
     console.log("CLICKED");
     console.log(event);
-
-    helpers.postSavedCom(event.subject, event.compPos, event.phase, event.comment).then(function() {
+  helpers.postSavedCom(event.subject, event.compPos, event.phase, event.comment).then(function() {
+    // Get the revised list!
+    helpers.getSavedCom().then(function(commentData) {
+      this.setState({ savedComments: commentData.data });
+      console.log("saved results", commentData.data);
+    }.bind(this));
+  }.bind(this));
+},
+ 
+    // This code handles the update.
+  handleClick4: function(event) {
+    console.log("CLICKED update");
+    console.log(event);
+    console.log("IDIDID", this.state._id);
+    helpers.updateSavedCom(this.state._id, event.subject, event.compPos, event.phase, event.comment).then(function() {
       // Get the revised list!
       helpers.getSavedCom().then(function(commentData) {
         this.setState({ savedComments: commentData.data });
         console.log("saved results", commentData.data);
       }.bind(this));
     }.bind(this));
-  },
+  }, 
  
   // A helper method for rendering the HTML when we have no saved comments
   renderEmpty: function() {
@@ -163,11 +179,14 @@ var Reviews = React.createClass({
     </section>
   </div>
 
-  <div className="col-sm-6 bg-white">
+  <div className="col-sm-6">
   <section>
-  <div className="header-content">
-  <h2 className="header-content-inner">Leave Feedback Here</h2>
-  </div>
+  <header className="header-content">
+      <h1>
+      <strong>
+      <i className="header-content-inner" aria-hidden="true"></i> Leave feedback here </strong>
+      </h1>
+      </header>
   <div>
   <form >
   <div className="form-group">
@@ -219,6 +238,7 @@ var Reviews = React.createClass({
   />
   <br />
   <button  className="btn btn-primary" onClick={() => this.handleClick3(this.state)}>Submit</button>
+  <button  className="btn btn-primary" onClick={() => this.handleClick4(this.state)}>Update</button>
   </form>
   </div>
   </section>

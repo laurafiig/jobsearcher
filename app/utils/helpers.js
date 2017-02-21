@@ -26,18 +26,15 @@ var helpers = {
       });
   },
 
-    // This will return a saved survey from our database
-  getSavedOneCom: function(_id) {
-    return axios.get("/api/surveys", {
-      params: {
-        "_id": _id
-      }
-    })
-      .then(function(results) {
-        console.log("axios results", results);
-        return results;
-      });
-  },
+    // This will return any saved surveys from our database and updTE
+ updateSavedCom: function(_id, subject, compPos, phase, comment) {
+   
+   return axios.post("/api/surveys/id", {_id:_id, subject: subject, compPos: compPos, phase: phase,comment: comment})
+     .then(function(response) {
+       console.log("post update", response);
+       return response;
+     });
+ },
  
   // This will remove saved articles from our database
   deleteSavedCom: function(_id) {
@@ -76,7 +73,7 @@ var helpers = {
  
   // This will save new jobs to our database
   postSavedApp: function(compName, position, link, appDate, howApp, appContact, phoneDate, phoneCont, phoneResult, intDate, intContact, intResult, offerDate, accepted, rejectDate, method) {
-    var newComment = { compName: compName, position: position , link: link, dateApp: appDate, howApp: howApp, contactApp: appContact, datePhone: phoneDate, contactPhone: phoneCont, resultPhone: phoneResult, dateInt: intDate, contactInt: intContact, resultInt: intResult, dateOffer: offerDate, Accept: accepted, dateRej: rejectDate, howRej: method, };
+    var newComment = { compName: compName, position: position , link: link, appDate: appDate, howApp: howApp, contactApp: appContact, datePhone: phoneDate, contactPhone: phoneCont, resultPhone: phoneResult, dateInt: intDate, contactInt: intContact, resultInt: intResult, dateOffer: offerDate, Accept: accepted, dateRej: rejectDate, howRej: method, };
     return axios.post("/api/apps", newComment)
       .then(function(response) {
         console.log("axios results", response.data._id);

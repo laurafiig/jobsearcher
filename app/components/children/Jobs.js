@@ -138,7 +138,7 @@ var Jobs = React.createClass({
             </h3>
             <h3>
               <span>
-                <em>{job.title}</em>
+                <em>{job.position}</em>
               </span>
               <span className="btn-group pull-right">
                 <button className="btn btn-primary" onClick={() => this.handleClick(job)}>Delete</button>
@@ -188,11 +188,14 @@ var Jobs = React.createClass({
             </section>
            </div> 
 
-          <div className="col-sm-6 bg-white">
+          <div className="col-sm-6">
           <section>
-          <div className="header-content">
-          <h1 className="header-content-inner">Application Info</h1>
-        </div>
+          <header className="header-content">
+      <h1>
+      <strong>
+      <i className="header-content-inner" aria-hidden="true"></i> Application Info</strong>
+      </h1>
+      </header>
         <div>
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
