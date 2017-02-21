@@ -141,7 +141,7 @@ var Jobs = React.createClass({
                 <em>{job.title}</em>
               </span>
               <span className="btn-group pull-right">
-                <button className="btn btn-warning" onClick={() => this.handleClick(job)}>Delete</button>
+                <button className="btn btn-primary" onClick={() => this.handleClick(job)}>Delete</button>
               </span>
             </h3>
             <h4>
@@ -173,27 +173,27 @@ var Jobs = React.createClass({
         <div className="row">
           <div className="col-sm-6">
 
-            <div className="panel panel-primary">
-              <div className="panel-heading">
-                <h1 className="panel-title">
+            <section>
+              <header className="header-content">
+                <h1>
                   <strong>
-                    <i className="fa fa-download" aria-hidden="true"></i>Job Applications</strong>
+                    <i className="header-content-inner" aria-hidden="true"></i>Job Applications</strong>
                 </h1>
-              </div>
-              <div className="panel-body">
+              </header>
+              <div>
                 <ul className="list-group">
                   {this.renderJobs()}
                 </ul>
               </div>
-            </div>
+            </section>
            </div> 
 
-          <div className="col-sm-6">
-          <div className="panel panel-default">
-          <div className="panel-heading">
-          <h2 className="text-center">Application Info</h2>
+          <div className="col-sm-6 bg-white">
+          <section>
+          <div className="header-content">
+          <h1 className="header-content-inner">Application Info</h1>
         </div>
-        <div className="panel-body text-center">
+        <div>
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
               <h4 className="">
@@ -386,7 +386,7 @@ var Jobs = React.createClass({
             </div>
           </form>
         </div>
-      </div>
+      </section>
       </div>
       </div>
         

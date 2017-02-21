@@ -9,7 +9,7 @@ var Main = React.createClass({
   // Here we render the function
   render: function() {
     return (
-      <div className="container">
+      <div className="container bg-photo">
         <div className="jumbotron bg-dark">
           <h1 className="text-center">Job Search Helper!</h1>
           <p className="text-center">

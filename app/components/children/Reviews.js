@@ -105,9 +105,13 @@ var Reviews = React.createClass({
               <span>
                 <em>{comment.subject}</em>
               </span>
-              <span className="btn-group-vertical pull-right">
+              <span className="btn-group pull-right">
               <button className="btn btn-primary" onClick={() => this.handleClick2(comment)}>View/Update</button>
-              <button className="btn btn-warning" onClick={() => this.handleClick(comment)}>Delete</button>
+              </span>
+            </h3>
+            <h3>
+              <span className="btn-group pull-right">
+              <button className="btn btn-primary" onClick={() => this.handleClick(comment)}>Delete</button>
               </span>
             </h3>
             <h4>
@@ -141,14 +145,14 @@ var Reviews = React.createClass({
   <div className="row">
   
   <div className="col-sm-6">
-    <div className="panel panel-primary">
+    <section>
       
-      <div className="panel-heading">
-      <h1 className="panel-title">
+      <header className="header-content">
+      <h1>
       <strong>
-      <i className="fa fa-download" aria-hidden="true"></i> Saved Comments</strong>
+      <i className="header-content-inner" aria-hidden="true"></i> Saved Comments</strong>
       </h1>
-      </div>
+      </header>
 
       <div className="panel-body">
       <ul className="list-group">
@@ -156,15 +160,15 @@ var Reviews = React.createClass({
       </ul>
       </div>
 
-    </div>
+    </section>
   </div>
 
-  <div className="col-sm-6">
-  <div className="panel panel-default">
-  <div className="panel-heading">
-  <h2 className="text-center">Leave Feedback Here</h2>
+  <div className="col-sm-6 bg-white">
+  <section>
+  <div className="header-content">
+  <h2 className="header-content-inner">Leave Feedback Here</h2>
   </div>
-  <div className="panel-body text-center">
+  <div>
   <form >
   <div className="form-group">
   <h4 className="">
@@ -217,7 +221,7 @@ var Reviews = React.createClass({
   <button  className="btn btn-primary" onClick={() => this.handleClick3(this.state)}>Submit</button>
   </form>
   </div>
-  </div>
+  </section>
   </div>
   </div>
 

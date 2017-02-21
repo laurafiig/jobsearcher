@@ -7,17 +7,17 @@ var Choice = React.createClass({
   // Here we describe this component's render method
   render: function() {
     return (
-      <div className="panel panel-default">
-        <div className="panel-heading">
-          <h3 className="panel-title text-center">What would you like to do?</h3>
-        </div>
-        <div className="panel-body text-center">
+      <section>
+        <header className="header-content">
+          <h3 className="header-content-inner">What would you like to do?</h3>
+        </header>
+        <div>
               <a href="#/Jobs" className="btn btn-primary btn-lg">Applications</a>
               <a>          </a>
               <a href="#/Reviews" className="btn btn-primary btn-lg">Reviews</a>
                             
         </div>
-      </div>
+      </section>
     );
   }
 });
