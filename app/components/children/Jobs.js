@@ -27,7 +27,8 @@ var Jobs = React.createClass({
       offerDate: "",
       accepted: "",
       rejectDate: "",
-      method: ""
+      method: "",
+      _id:""
        };
   },
 
@@ -60,6 +61,7 @@ var Jobs = React.createClass({
 //    console.log(item);
 //    console.log("subject:", item.subject);
 //    console.log("END FOR UPDATE");
+      console.log("ITEM!!!", item);
     
       console.log(item)
       this.setState({
@@ -78,7 +80,8 @@ var Jobs = React.createClass({
       offerDate: item.offerDate,
       accepted: item.accepted,
       rejectDate: item.rejectDate,
-      method: item.method
+      method: item.method,
+      _id: item._id
     });
     
   },
@@ -101,6 +104,20 @@ var Jobs = React.createClass({
     helpers.postSavedApp(event.compName, event.position, event.link, event.appDate, event.howApp, event.appContact, event.phoneDate, event.phoneCont, event.phoneResult, event.intDate, event.intContact, event.intResult, event.offerDate, event.accepted, event.rejectDate, event.method).then(function() {
       // Get the revised list!
       helpers.getSavedApp().then(function(jobData) {
+        this.setState({ savedJobs: jobData.data });
+        console.log("saved results", jobData.data);
+      }.bind(this));
+    }.bind(this));
+  },
+
+  // This code handles the update.
+  handleClick4: function(event) {
+    console.log("CLICKED update");
+    console.log(event);
+    console.log("IDIDID", this.state._id);
+    helpers.updateSavedCom(this.state._id, event.compName, event.position, event.link, event.appDate, event.howApp, event.appContact, event.phoneDate, event.phoneCont, event.phoneResult, event.intDate, event.intContact, event.intResult, event.offerDate, event.accepted, event.rejectDate, event.method).then(function() {
+      // Get the revised list!
+      helpers.getSavedCom().then(function(jobData) {
         this.setState({ savedJobs: jobData.data });
         console.log("saved results", jobData.data);
       }.bind(this));
@@ -385,6 +402,9 @@ var Jobs = React.createClass({
               <hr />
               <button className="btn btn-primary" onClick={() => this.handleClick3(this.state)} >
                 Submit
+              </button>
+              <button className="btn btn-primary" onClick={() => this.handleClick4(this.state)} >
+                Update
               </button>
             </div>
           </form>

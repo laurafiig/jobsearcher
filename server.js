@@ -64,6 +64,7 @@ app.post("/api/surveys", function(req, res) {
     }
   });
 });
+
 // Route to update a review to database
 app.post("/api/surveys/id", function(req, res) {
   console.log("WHY!!!!", req.body);
@@ -149,27 +150,23 @@ app.get("/api/logins", function(req, res) {
 
 // Route to add an application to database
 app.post("/api/apps", function(req, res) {
-  
-  
+  var newJob = new Job(req.body);
   console.log(req.body);
-  Job.findOneAndUpdate({
-      login: req.body.login,
-      compName: req.body.compName,
-      position: req.body.position,
-      link: req.body.link,
-      appDate: req.body.appDate,
-      howApp: req.body.howApp,
-      appContact: req.body.appContact,
-      phoneDate: req.body.phoneDate,
-      phoneCont: req.body.phoneCont,
-      phoneResult: req.body.phoneResult,
-      intDate: req.body.intDate,
-      intContact: req.body.intContact,
-      intResult: req.body.intResult,
-      offerDate: req.body.offerDate,
-      accepted: req.body.accepted,
-      rejectDate: req.body.rejectDate,
-      method: req.body.method
+  newJob.save(function(err, doc) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      res.send(doc);
+    }
+  });
+});
+  
+  // Route to update a review to database
+app.post("/api/apps/id", function(req, res) {
+  console.log("WHY!!!!", req.body);
+  Comment.update({
+      _id: req.body._id
   }, {
     $set: {
       login: req.body.login,
@@ -190,34 +187,19 @@ app.post("/api/apps", function(req, res) {
       rejectDate: req.body.rejectDate,
       method: req.body.method
     }
-  }, { upsert: true }).exec(function(err, doc) {
+  },function(err, doc) {
     if (err) {
       console.log(err);
     }
     else {
       res.send(doc);
-      console.log(doc);
     }
   });
 });
-
+  
 // Route to get all saved applications
 app.get("/api/apps", function(req, res) {
   Job.find({})
-    .exec(function(err, doc) {
-      if (err) {
-        console.log(err);
-      }
-      else {
-        res.send(doc);
-      }
-    });
-});
-
-// Route to get one saved application
-app.get("/api/apps", function(req, res) {
-  var id = req.param("_id");
-  Comment.find({ _id: id })
     .exec(function(err, doc) {
       if (err) {
         console.log(err);
