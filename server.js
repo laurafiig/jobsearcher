@@ -165,7 +165,7 @@ app.post("/api/apps", function(req, res) {
   // Route to update a review to database
 app.post("/api/apps/id", function(req, res) {
   console.log("WHY!!!!", req.body);
-  Comment.update({
+  Job.update({
       _id: req.body._id
   }, {
     $set: {

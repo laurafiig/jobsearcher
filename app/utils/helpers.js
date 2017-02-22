@@ -73,8 +73,8 @@ var helpers = {
  
   // This will save new jobs to our database
   postSavedApp: function(compName, position, link, appDate, howApp, appContact, phoneDate, phoneCont, phoneResult, intDate, intContact, intResult, offerDate, accepted, rejectDate, method) {
-    var newComment = { compName: compName, position: position, link: link, appDate: appDate, howApp: howApp, appContact: appContact, phoneDate: phoneDate, phoneCont: phoneCont, phoneResult: phoneResult, intDate: intDate, intContact: intContact, intResult: intResult, offerDate:offerDate, accepted: accepted, rejectDate: rejectDate, method: method };
-    return axios.post("/api/apps", newComment)
+    var newJob = { compName: compName, position: position, link: link, appDate: appDate, howApp: howApp, appContact: appContact, phoneDate: phoneDate, phoneCont: phoneCont, phoneResult: phoneResult, intDate: intDate, intContact: intContact, intResult: intResult, offerDate:offerDate, accepted: accepted, rejectDate: rejectDate, method: method };
+    return axios.post("/api/apps", newJob)
       .then(function(response) {
         console.log("axios results", response.data._id);
         return response.data._id;
@@ -91,7 +91,7 @@ var helpers = {
   },
 
   // This will return any saved surveys from our database and updTE
- updateSavedCom: function(_id, compName, position, link, appDate, howApp, appContact, phoneDate, phoneCont, phoneResult, intDate, intContact, intResult, offerDate, accepted, rejectDate, method) {
+ updateSavedApp: function(_id, compName, position, link, appDate, howApp, appContact, phoneDate, phoneCont, phoneResult, intDate, intContact, intResult, offerDate, accepted, rejectDate, method) {
    
    return axios.post("/api/apps/id", {_id:_id, compName: compName, position: position, link: link, appDate: appDate, howApp: howApp, appContact: appContact, phoneDate: phoneDate, phoneCont: phoneCont, phoneResult: phoneResult, intDate: intDate, intContact: intContact, intResult: intResult, offerDate:offerDate, accepted: accepted, rejectDate: rejectDate, method: method})
      .then(function(response) {

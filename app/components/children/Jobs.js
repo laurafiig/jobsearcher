@@ -63,7 +63,6 @@ var Jobs = React.createClass({
 //    console.log("END FOR UPDATE");
       console.log("ITEM!!!", item);
     
-      console.log(item)
       this.setState({
       compName: item.compName,
       position: item.position,
@@ -115,9 +114,9 @@ var Jobs = React.createClass({
     console.log("CLICKED update");
     console.log(event);
     console.log("IDIDID", this.state._id);
-    helpers.updateSavedCom(this.state._id, event.compName, event.position, event.link, event.appDate, event.howApp, event.appContact, event.phoneDate, event.phoneCont, event.phoneResult, event.intDate, event.intContact, event.intResult, event.offerDate, event.accepted, event.rejectDate, event.method).then(function() {
+    helpers.updateSavedApp(this.state._id, event.compName, event.position, event.link, event.appDate, event.howApp, event.appContact, event.phoneDate, event.phoneCont, event.phoneResult, event.intDate, event.intContact, event.intResult, event.offerDate, event.accepted, event.rejectDate, event.method).then(function() {
       // Get the revised list!
-      helpers.getSavedCom().then(function(jobData) {
+      helpers.getSavedApp().then(function(jobData) {
         this.setState({ savedJobs: jobData.data });
         console.log("saved results", jobData.data);
       }.bind(this));
